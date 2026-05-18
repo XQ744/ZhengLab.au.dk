@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zheng Lab | Spatial Proteomics at Aarhus University</title>
+  <meta
+    name="description"
+    content="Zheng Lab at Aarhus University develops spatial proteomics and deep visual proteomics approaches for tumor-immune biology and precision oncology."
+  >
+  <style>
+    :root {
+      --ink: #102033;
+      --muted: #64748b;
+      --line: #dbe4ee;
+      --bg: #f6f9fc;
+      --card: rgba(255, 255, 255, 0.82);
+      --navy: #071827;
+      --teal: #12b8a6;
+      --blue: #3b82f6;
+      --gold: #f2b84b;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(18, 184, 166, 0.18), transparent 34rem),
+        radial-gradient(circle at 85% 4%, rgba(59, 130, 246, 0.16), transparent 30rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(219, 228, 238, 0.72);
+      background: rgba(246, 249, 252, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      color: white;
+      box-shadow: 0 12px 30px rgba(18, 184, 166, 0.26);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 84px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.85fr);
+      align-items: center;
+      gap: 54px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      padding: 8px 13px;
+      border: 1px solid rgba(18, 184, 166, 0.28);
+      border-radius: 999px;
+      background: rgba(18, 184, 166, 0.09);
+      color: #087c72;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      color: var(--navy);
+      font-size: clamp(3.15rem, 7vw, 6.6rem);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(115deg, var(--teal), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.8vw, 1.24rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 16px 36px rgba(18, 184, 166, 0.22);
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: white;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.65rem;
+      line-height: 1.1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .profile-card {
+      position: relative;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-photo-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--navy);
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .profile-photo-wrap::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(7, 24, 39, 0.88) 100%);
+      content: "";
+    }
+
+    .profile-caption {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      z-index: 2;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 22px;
+      background: rgba(7, 24, 39, 0.72);
+      color: white;
+      backdrop-filter: blur(14px);
+    }
+
+    .profile-caption h2 {
+      margin-bottom: 4px;
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+    }
+
+    .profile-caption p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(260px, 0.42fr);
+      align-items: end;
+      gap: 34px;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      margin-bottom: 10px;
+      color: #087c72;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin-bottom: 0;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .section-head p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    .card-icon {
+      display: grid;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+      place-items: center;
+      border-radius: 17px;
+      background: rgba(18, 184, 166, 0.12);
+      color: #087c72;
+      font-weight: 900;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-size: 1.22rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .paper {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .paper-main,
+    .paper-side {
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .paper-main {
+      padding: 34px;
+    }
+
+    .paper-tag {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(242, 184, 75, 0.14);
+      color: #9a6500;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .paper-main h3 {
+      max-width: 830px;
+      margin-bottom: 14px;
+      color: var(--navy);
+      font-size: clamp(1.75rem, 3vw, 2.65rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .paper-meta {
+      margin-bottom: 22px;
+      color: var(--muted);
+    }
+
+    .highlights {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .highlights li {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 12px;
+      color: var(--ink);
+    }
+
+    .highlights li::before {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(18, 184, 166, 0.12);
+      color: #087c72;
+      content: "✓";
+      font-weight: 900;
+    }
+
+    .paper-side {
+      display: grid;
+      align-content: end;
+      min-height: 100%;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 35% 20%, rgba(18, 184, 166, 0.28), transparent 11rem),
+        radial-gradient(circle at 68% 54%, rgba(59, 130, 246, 0.22), transparent 13rem),
+        var(--navy);
+      color: white;
+    }
+
+    .paper-side-inner {
+      padding: 28px;
+      background: linear-gradient(180deg, transparent, rgba(7, 24, 39, 0.72));
+    }
+
+    .paper-side strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 3rem;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .paper-side span {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.74);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: inline-flex;
+      margin-bottom: 38px;
+      color: var(--teal);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .step p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .join {
+      margin: 72px 0 38px;
+      padding: 42px;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(18, 184, 166, 0.18), rgba(59, 130, 246, 0.12)),
+        white;
+      border: 1px solid rgba(18, 184, 166, 0.22);
+      box-shadow: var(--shadow);
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .join h2 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .join p {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 30px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-head,
+      .paper,
+      .join-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .workflow,
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .profile-photo {
+        height: 460px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 17vw, 4.6rem);
+      }
+
+      .cards,
+      .workflow,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .paper-main,
+      .join {
+        padding: 26px;
+      }
+
+      .profile-photo {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="Zheng Lab home">
+        <span class="brand-mark">Z</span>
+        <span>Zheng Lab</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#paper">Representative Work</a>
+        <a href="#platform">Platform</a>
+        <a href="#join">Join</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Aarhus University · Department of Biomedicine</p>
+          <h1>Spatial proteomics for <span class="gradient-text">precision oncology.</span></h1>
+          <p class="hero-copy">
+            The Zheng Lab develops multiplexed imaging-powered deep visual proteomics to map
+            tumor-immune ecosystems, uncover spatially regulated cell states, and identify
+            therapeutic opportunities from clinical tissue.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#paper">View Representative Work</a>
+            <a class="button secondary" href="#research">Explore Research</a>
+          </div>
+          <div class="stats" aria-label="Lab highlights">
+            <div class="stat">
+              <strong>mipDVP</strong>
+              <span>multiplexed imaging-powered deep visual proteomics</span>
+            </div>
+            <div class="stat">
+              <strong>21</strong>
+              <span>cell populations identified in spatial tissue context</span>
+            </div>
+            <div class="stat">
+              <strong>2025</strong>
+              <span>representative work in Molecular Cell</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Professor Xiang Zheng profile">
+          <div class="profile-photo-wrap">
+            <img class="profile-photo" src="照片.jpg" alt="Professor Xiang Zheng in a laboratory setting">
+            <div class="profile-caption">
+              <h2>Prof. Xiang Zheng</h2>
+              <p>Assistant Professor in Spatial Proteomics, Aarhus University</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Research Focus</p>
+            <h2>Understanding disease as a spatially organized ecosystem.</h2>
+          </div>
+          <p>
+            The lab combines clinical questions with high-dimensional imaging, laser microdissection,
+            mass spectrometry, and computational interpretation to resolve molecular programs inside tissue.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">01</div>
+            <h3>Tumor-Immune Crosstalk</h3>
+            <p>
+              Decode how cancer cells, macrophages, T cells, and stromal neighborhoods interact to
+              shape immune evasion and therapy response.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">02</div>
+            <h3>Spatial Proteomics</h3>
+            <p>
+              Build and apply mipDVP workflows that connect multiplexed tissue images with deep
+              proteomic measurements at spatially defined cell populations.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">03</div>
+            <h3>Precision Medicine</h3>
+            <p>
+              Transform archived and clinical tissues into molecular maps that reveal biomarkers,
+              vulnerabilities, and patient-specific therapeutic hypotheses.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="paper">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Representative Work</p>
+            <h2>Highly multiplexed imaging and deep visual proteomics.</h2>
+          </div>
+          <p>
+            The provided representative article introduces mipDVP and applies it to colorectal and
+            tonsil cancer tissues to reveal spatially regulated tumor-immune interactions.
+          </p>
+        </div>
+
+        <div class="paper">
+          <article class="paper-main">
+            <span class="paper-tag">Molecular Cell · 2025</span>
+            <h3>Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics</h3>
+            <p class="paper-meta">
+              Xiang Zheng, Andreas Mund, Matthias Mann · Molecular Cell 85, 1008–1023 ·
+              DOI: 10.1016/j.molcel.2024.12.023
+            </p>
+            <ul class="highlights">
+              <li>Developed an advanced strategy combining multiplexed imaging, single-cell laser microdissection, and sensitive mass spectrometry.</li>
+              <li>Identified 21 cell populations and thousands of proteins while preserving spatial tissue context.</li>
+              <li>Revealed an immunosuppressive macrophage barrier that may impede T-cell infiltration in cold tumors.</li>
+              <li>Discovered spatial T-cell adaptations in hypoxic tumor regions and potential immunotherapy targets.</li>
+            </ul>
+            <a class="button" href="代表作.pdf" target="_blank" rel="noopener">Open Full Paper PDF</a>
+          </article>
+
+          <aside class="paper-side" aria-label="Publication summary">
+            <div class="paper-side-inner">
+              <strong>mipDVP</strong>
+              <span>
+                A platform for reading tissue architecture and proteomic depth together,
+                enabling spatial insights for personalized oncology.
+              </span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="platform">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Platform</p>
+            <h2>A tissue-to-proteome workflow built for clinical questions.</h2>
+          </div>
+          <p>
+            The design emphasizes the lab's methodological identity: spatial context first,
+            then deep molecular profiling, then translational interpretation.
+          </p>
+        </div>
+
+        <div class="workflow">
+          <article class="step">
+            <h3>Multiplexed Imaging</h3>
+            <p>Visualize tumor, immune, and stromal markers across intact clinical tissue sections.</p>
+          </article>
+          <article class="step">
+            <h3>Spatial Selection</h3>
+            <p>Choose cell populations and niches based on tissue context and biological hypotheses.</p>
+          </article>
+          <article class="step">
+            <h3>Proteomic Profiling</h3>
+            <p>Measure thousands of proteins from selected cells using sensitive mass spectrometry.</p>
+          </article>
+          <article class="step">
+            <h3>Clinical Translation</h3>
+            <p>Identify biomarkers, immune adaptations, and therapeutic targets for precision medicine.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="shell">
+        <div class="join">
+          <div class="join-grid">
+            <div>
+              <h2>Join Zheng Lab in Aarhus.</h2>
+              <p>
+                We welcome students, postdocs, clinicians, and computational collaborators who want
+                to work at the interface of imaging, proteomics, cancer biology, and precision medicine.
+              </p>
+            </div>
+            <a class="button" href="mailto:xiangzheng@biomed.au.dk">Contact the Lab</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© Zheng Lab · Aarhus University</span>
+      <span>Spatial Proteomics · Tumor Microenvironment · Precision Oncology</span>
+    </div>
+  </footer>
+</body>
+</html>
