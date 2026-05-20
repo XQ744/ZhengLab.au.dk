@@ -519,6 +519,80 @@
       color: var(--muted);
     }
 
+    .cv-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.92fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .cv-main,
+    .cv-side {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .cv-main {
+      padding: 34px;
+    }
+
+    .cv-side {
+      display: grid;
+      gap: 14px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .cv-block + .cv-block {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cv-block h3 {
+      margin-bottom: 12px;
+      color: var(--navy);
+      font-size: 1.24rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cv-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+    }
+
+    .cv-list li + li {
+      margin-top: 10px;
+    }
+
+    .cv-list li span {
+      color: var(--muted);
+    }
+
+    .cv-highlight {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(246, 249, 252, 0.9);
+    }
+
+    .cv-highlight strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cv-highlight p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
     footer {
       padding: 30px 0 44px;
       border-top: 1px solid var(--line);
@@ -536,7 +610,8 @@
       .hero-grid,
       .section-head,
       .paper,
-      .join-grid {
+      .join-grid,
+      .cv-grid {
         grid-template-columns: 1fr;
       }
 
@@ -575,6 +650,7 @@
       }
 
       .paper-main,
+      .cv-main,
       .join {
         padding: 26px;
       }
@@ -596,6 +672,7 @@
         <a href="#research">Research</a>
         <a href="#paper">Representative Work</a>
         <a href="#platform">Platform</a>
+        <a href="#cv">CV</a>
         <a href="#join">Join</a>
       </nav>
     </div>
@@ -608,9 +685,9 @@
           <p class="eyebrow">Aarhus University · Department of Biomedicine</p>
           <h1>Spatial proteomics for <span class="gradient-text">precision oncology.</span></h1>
           <p class="hero-copy">
-            The Zheng Lab develops multiplexed imaging-powered deep visual proteomics to map
-            tumor-immune ecosystems, uncover spatially regulated cell states, and identify
-            therapeutic opportunities from clinical tissue.
+            Prof. Xiang Zheng leads translational spatial proteomics programs that decode
+            tumor-immune ecosystems, discover biomarkers of therapy resistance, and bridge
+            multiplexed imaging with deep proteomic profiling for precision oncology.
           </p>
           <div class="hero-actions">
             <a class="button" href="#paper">View Representative Work</a>
@@ -618,16 +695,16 @@
           </div>
           <div class="stats" aria-label="Lab highlights">
             <div class="stat">
-              <strong>mipDVP</strong>
-              <span>multiplexed imaging-powered deep visual proteomics</span>
+              <strong>20</strong>
+              <span>peer-reviewed publications (10 first-author, 3 corresponding-author)</span>
             </div>
             <div class="stat">
-              <strong>21</strong>
-              <span>cell populations identified in spatial tissue context</span>
+              <strong>1,354</strong>
+              <span>Google Scholar citations across spatial proteomics and oncology research</span>
             </div>
             <div class="stat">
-              <strong>2025</strong>
-              <span>representative work in Molecular Cell</span>
+              <strong>13M DKK</strong>
+              <span>competitive grants secured across 6 funded projects</span>
             </div>
           </div>
         </div>
@@ -637,7 +714,7 @@
             <img class="profile-photo" src="照片.jpg" alt="Professor Xiang Zheng in a laboratory setting">
             <div class="profile-caption">
               <h2>Prof. Xiang Zheng</h2>
-              <p>Assistant Professor in Spatial Proteomics, Aarhus University</p>
+              <p>Group Leader and LEO Foundation Dr. Abildgaard Fellow in Spatial Precision Oncology</p>
             </div>
           </div>
         </aside>
@@ -759,6 +836,133 @@
             <h3>Clinical Translation</h3>
             <p>Identify biomarkers, immune adaptations, and therapeutic targets for precision medicine.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cv">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">CV / About</p>
+            <h2>Academic profile, leadership, and translational impact.</h2>
+          </div>
+          <p>
+            Xiang Zheng, PhD, is Group Leader at Aarhus University focusing on spatial proteomics,
+            tumor-immune biology, and precision medicine with active clinical and industry collaborations.
+          </p>
+        </div>
+
+        <div class="cv-grid">
+          <article class="cv-main">
+            <div class="cv-block">
+              <h3>Overview</h3>
+              <p>
+                Author of 20 peer-reviewed publications (10 first-author, 3 corresponding-author) with
+                1,354 citations, 42 invited/keynote/selected conference talks, 19 scientific distinctions,
+                and six competitive grants totaling 13 million DKK.
+              </p>
+              <p class="paper-meta">
+                Contact: xiangzheng@biomed.au.dk · ORCID: 0000-0001-7588-825X
+              </p>
+            </div>
+
+            <div class="cv-block">
+              <h3>Education</h3>
+              <ul class="cv-list">
+                <li>2021 · PhD in Human Biomedicine, Max Planck Institute, Germany</li>
+                <li>2014 · MSc in Molecular Biology and Oncology, Peking University, China</li>
+                <li>2011 · Bachelor of Clinical Medicine, Nanchang University, China</li>
+              </ul>
+            </div>
+
+            <div class="cv-block">
+              <h3>Academic Employment</h3>
+              <ul class="cv-list">
+                <li>2026-present · Group Leader, LEO Foundation Dr. Abildgaard Fellow in Spatial Precision Oncology, Aarhus University</li>
+                <li>2024-2026 · Assistant Professor in Spatial Proteomics, Aarhus University</li>
+                <li>2021-2024 · Postdoctoral Researcher in Spatial Proteomics, University of Copenhagen</li>
+              </ul>
+            </div>
+
+            <div class="cv-block">
+              <h3>Scientific Focus Areas</h3>
+              <ul class="cv-list">
+                <li><strong>Immune Microenvironment:</strong> high-resolution multiplexed imaging to map immune landscapes.</li>
+                <li><strong>Spatial Proteomics:</strong> integration of imaging, laser microdissection, and mass spectrometry (mipDVP).</li>
+                <li><strong>Precision Medicine:</strong> biomarker and therapeutic-target discovery in clinical tissues.</li>
+              </ul>
+            </div>
+
+            <div class="cv-block">
+              <h3>Selected Awards and Honors (Recent)</h3>
+              <ul class="cv-list">
+                <li>2026 · NASSA Travel Grant; Miltenyi Biotec Publication Award</li>
+                <li>2025 · HUPO ECR Manuscript Competition First Place; IUPS Poster Award; SPS Travel Grant</li>
+                <li>2024 · Emerging Technologies Funding Award; Danish Bioimaging Image Contest Winner</li>
+                <li>2022-2023 · FEBS Youth Travel Fund Grant; Keystone Symposia Scholarship; HUPO/CNHUPO recognitions</li>
+              </ul>
+            </div>
+
+            <div class="cv-block">
+              <h3>Selected Grants and Funding (2025)</h3>
+              <ul class="cv-list">
+                <li>LEO Foundation Dr Abildgaard Fellowship · <strong>12,000,000 DKK</strong> · Principal Investigator</li>
+                <li>EU HALRIC Pilot Study · <strong>600,000 DKK</strong> · Principal Investigator</li>
+                <li>Additional PI grants (Fabrikant Einar Willumsens Mindelegat, Eva and Henry Fraenkels Mindefond, NEYE, LEO Leadership Program) · <strong>350,000 DKK</strong></li>
+              </ul>
+            </div>
+
+            <div class="cv-block">
+              <h3>Global Collaborations</h3>
+              <ul class="cv-list">
+                <li>Matthias Mann (Max Planck Institute) · 9 joint mipDVP projects</li>
+                <li>Robert A. Fenton (Aarhus University) · renal proteomics collaboration</li>
+                <li>Ulf Ahlgren (Umea University) · 3D-mipDVP development</li>
+                <li>Mitch Levesque and Bastian Schilling · large translational skin-lymphoma and melanoma cohorts</li>
+                <li>Lars Fugger (University of Oxford) · longitudinal proteomics in neuroimmunology</li>
+              </ul>
+            </div>
+
+            <div class="cv-block">
+              <h3>Teaching and Supervision</h3>
+              <ul class="cv-list">
+                <li>Supervised or co-supervised 8 junior researchers (Bachelor, Master, and PhD levels).</li>
+                <li>Certified in University Pedagogy with teaching in Immunology, Histology, and Clinical Biochemistry Laboratory courses.</li>
+                <li>Annual teaching contribution to courses enrolling approximately 530 bachelor students.</li>
+              </ul>
+            </div>
+
+            <div class="cv-block">
+              <h3>Selected Publications</h3>
+              <ul class="cv-list">
+                <li>Zheng X#, Mund A, Mann M. <span>Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics. Molecular Cell, 2025.</span></li>
+                <li>Zheng X, Weigert A, et al. <span>The HDAC2-SP1 axis orchestrates protumor macrophage polarization. Cancer Research, 2023.</span></li>
+                <li>Weigert A, Zheng X, et al. <span>Fibrocytes boost tumor-supportive phenotypic switches in the lung cancer niche. Nature Communications, 2022.</span></li>
+                <li>Zheng X, Mansouri S, et al. <span>Metabolism in tumor-associated macrophages. European Respiratory Review, 2020.</span></li>
+                <li>Zheng X, Turkowski K, et al. <span>Redirecting tumor-associated macrophages to become tumoricidal effectors. Oncotarget, 2017.</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <aside class="cv-side" aria-label="CV highlights">
+            <div class="cv-highlight">
+              <strong>Current Appointment</strong>
+              <p>Group Leader at Aarhus University and LEO Foundation Dr. Abildgaard Fellow in Spatial Precision Oncology (2026-present).</p>
+            </div>
+            <div class="cv-highlight">
+              <strong>Technology Contribution</strong>
+              <p>Developed the mipDVP platform integrating multiplexed imaging, single-cell laser microdissection, and deep proteomics.</p>
+            </div>
+            <div class="cv-highlight">
+              <strong>Professional Service</strong>
+              <p>Advisory and editorial roles in HUPO and interdisciplinary journals, with 85+ peer-review reports across major journals and funding bodies.</p>
+            </div>
+            <div class="cv-highlight">
+              <strong>Industry and Translation</strong>
+              <p>Leads collaborative translation with Miltenyi Biotec and contributes scientific advising for imaging and microfluidic innovation programs.</p>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
