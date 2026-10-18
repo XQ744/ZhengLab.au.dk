@@ -8,6 +8,8 @@
     name="description"
     content="Zheng Lab at Aarhus University develops spatial proteomics and deep visual proteomics approaches for tumor-immune biology and precision oncology."
   >
+  <meta name="theme-color" content="#f6f9fc">
+  <script src="script.js"></script>
   <style>
     :root {
       --ink: #102033;
@@ -20,6 +22,18 @@
       --blue: #3b82f6;
       --gold: #f2b84b;
       --shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
+      color-scheme: light;
+    }
+
+    :root[data-theme="dark"] {
+      --ink: #e5eef7;
+      --muted: #a8bacb;
+      --line: #294052;
+      --bg: #07131f;
+      --card: rgba(13, 29, 42, 0.88);
+      --navy: #f3f8fc;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      color-scheme: dark;
     }
 
     * {
@@ -39,6 +53,18 @@
         var(--bg);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.65;
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    :root[data-theme="dark"] body {
+      background:
+        radial-gradient(circle at top left, rgba(18, 184, 166, 0.12), transparent 34rem),
+        radial-gradient(circle at 85% 4%, rgba(59, 130, 246, 0.1), transparent 30rem),
+        var(--bg);
+    }
+
+    html[lang="zh-CN"] body {
+      font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", Inter, ui-sans-serif, system-ui, sans-serif;
     }
 
     a {
@@ -63,6 +89,11 @@
       border-bottom: 1px solid rgba(219, 228, 238, 0.72);
       background: rgba(246, 249, 252, 0.86);
       backdrop-filter: blur(18px);
+    }
+
+    :root[data-theme="dark"] .nav {
+      border-bottom-color: rgba(41, 64, 82, 0.82);
+      background: rgba(7, 19, 31, 0.88);
     }
 
     .nav-inner {
@@ -106,6 +137,62 @@
 
     .nav-links a {
       white-space: nowrap;
+    }
+
+    .nav-actions,
+    .site-controls {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-actions {
+      min-width: 0;
+      gap: clamp(14px, 2vw, 28px);
+    }
+
+    .site-controls {
+      flex: 0 0 auto;
+      gap: 8px;
+    }
+
+    .control-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .control-button:hover {
+      border-color: rgba(18, 184, 166, 0.55);
+      background: rgba(18, 184, 166, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .control-button:focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 3px;
+    }
+
+    .control-icon {
+      width: 1.1em;
+      font-size: 1rem;
+      line-height: 1;
+      text-align: center;
+    }
+
+    :root[data-theme="dark"] .control-button {
+      background: rgba(13, 29, 42, 0.92);
     }
 
     a:focus-visible {
@@ -557,6 +644,13 @@
       counter-reset: step;
     }
 
+    .platform-infrastructure {
+      margin-top: 72px;
+      padding-top: 72px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 96px;
+    }
+
     .step {
       position: relative;
       padding: 24px;
@@ -597,25 +691,12 @@
       box-shadow: var(--shadow);
     }
 
-    .join-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: center;
-    }
-
     .join h2 {
-      margin-bottom: 10px;
+      margin-bottom: 0;
       color: var(--navy);
       font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1;
+      line-height: 1.1;
       letter-spacing: -0.045em;
-    }
-
-    .join p {
-      max-width: 760px;
-      margin-bottom: 0;
-      color: var(--muted);
     }
 
     .cv-grid {
@@ -779,25 +860,6 @@
       border-top: 1px solid var(--line);
     }
 
-    .team-invitation {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 24px;
-      padding: 24px;
-      border: 1px solid rgba(18, 184, 166, 0.22);
-      border-radius: 22px;
-      background: rgba(18, 184, 166, 0.06);
-    }
-
-    .team-invitation p {
-      flex: 1 1 280px;
-      margin-bottom: 0;
-      color: var(--muted);
-    }
-
     .space-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       margin-bottom: 24px;
@@ -852,6 +914,55 @@
       color: var(--muted);
     }
 
+    :root[data-theme="dark"] .stat,
+    :root[data-theme="dark"] .profile-card,
+    :root[data-theme="dark"] .profile-contact,
+    :root[data-theme="dark"] .button.secondary,
+    :root[data-theme="dark"] .card,
+    :root[data-theme="dark"] .paper-main,
+    :root[data-theme="dark"] .step,
+    :root[data-theme="dark"] .cv-main,
+    :root[data-theme="dark"] .cv-side,
+    :root[data-theme="dark"] .team-card,
+    :root[data-theme="dark"] .space-card,
+    :root[data-theme="dark"] .equipment-card {
+      background: rgba(13, 29, 42, 0.92);
+    }
+
+    :root[data-theme="dark"] .cv-highlight {
+      background: rgba(7, 19, 31, 0.72);
+    }
+
+    :root[data-theme="dark"] .join {
+      background:
+        linear-gradient(135deg, rgba(18, 184, 166, 0.14), rgba(59, 130, 246, 0.1)),
+        #0d1d2a;
+    }
+
+    :root[data-theme="dark"] .equipment-card img {
+      background: #102432;
+    }
+
+    :root[data-theme="dark"] .contact-email {
+      color: #75e6d8;
+    }
+
+    :root[data-theme="dark"] .contact-orcid a,
+    :root[data-theme="dark"] .contact-orcid a:hover {
+      color: #75e6d8;
+    }
+
+    :root[data-theme="dark"] .paper-tag {
+      color: #ffd27a;
+    }
+
+    :root[data-theme="dark"] .eyebrow,
+    :root[data-theme="dark"] .kicker,
+    :root[data-theme="dark"] .card-icon,
+    :root[data-theme="dark"] .step::before {
+      color: #65ddcf;
+    }
+
     footer {
       padding: 30px 0 44px;
       border-top: 1px solid var(--line);
@@ -873,22 +984,37 @@
         padding-bottom: 10px;
       }
 
+      .nav-actions {
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
       .nav-links {
+        order: 2;
         flex: 1 1 100%;
+        width: 100%;
         min-width: 0;
         gap: 20px;
         overflow-x: auto;
         padding: 4px;
       }
 
+      .site-controls {
+        order: 1;
+      }
+
       section {
+        scroll-margin-top: 130px;
+      }
+
+      .platform-infrastructure {
         scroll-margin-top: 130px;
       }
 
       .hero-grid,
       .section-head,
       .paper,
-      .join-grid,
       .cv-grid {
         grid-template-columns: 1fr;
       }
@@ -931,6 +1057,15 @@
       .nav-links {
         gap: 16px;
         font-size: 0.86rem;
+      }
+
+      .control-button {
+        min-height: 36px;
+        padding: 0 10px;
+      }
+
+      .control-label {
+        display: none;
       }
 
       .hero {
@@ -987,6 +1122,12 @@
       html {
         scroll-behavior: auto;
       }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
@@ -997,15 +1138,26 @@
         <span class="brand-mark">Z</span>
         <span>Zheng Lab</span>
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#research">Research</a>
-        <a href="#paper">Representative Work</a>
-        <a href="#platform">Platform</a>
-        <a href="#equipment">Equipment</a>
-        <a href="#team">Team</a>
-        <a href="#cv">CV</a>
-        <a href="#join">Join</a>
-      </nav>
+      <div class="nav-actions">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#research">Research</a>
+          <a href="#paper">Representative Work</a>
+          <a href="#platform">Platform &amp; Equipment</a>
+          <a href="#team">Team</a>
+          <a href="#cv">CV</a>
+          <a href="#join">Join</a>
+        </nav>
+        <div class="site-controls" aria-label="Display settings">
+          <button class="control-button" id="language-toggle" type="button" aria-label="切换为中文" title="切换为中文">
+            <span class="control-icon" aria-hidden="true">文</span>
+            <span class="control-label" id="language-label">中文</span>
+          </button>
+          <button class="control-button" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" aria-pressed="false">
+            <span class="control-icon" id="theme-icon" aria-hidden="true">☾</span>
+            <span class="control-label" id="theme-label">Dark</span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -1185,11 +1337,8 @@
             <p>Identify biomarkers, immune adaptations, and therapeutic targets for precision medicine.</p>
           </article>
         </div>
-      </div>
-    </section>
 
-    <section id="equipment" aria-labelledby="equipment-heading">
-      <div class="shell">
+        <div class="platform-infrastructure" id="equipment" aria-labelledby="equipment-heading">
         <div class="section-head">
           <div>
             <p class="kicker">Research Infrastructure</p>
@@ -1241,6 +1390,7 @@
               <p>Spatial metabolomics</p>
             </div>
           </article>
+        </div>
         </div>
       </div>
     </section>
@@ -1298,11 +1448,6 @@
               <li>Christian V. Westberg</li>
             </ul>
           </article>
-        </div>
-
-        <div class="team-invitation">
-          <p>We welcome connections with prospective PhD students, postdocs, and collaborators.</p>
-          <a class="button secondary" href="mailto:xiangzheng@biomed.au.dk">Connect with the Lab</a>
         </div>
       </div>
     </section>
@@ -1480,16 +1625,7 @@
     <section id="join">
       <div class="shell">
         <div class="join">
-          <div class="join-grid">
-            <div>
-              <h2>Join Zheng Lab in Aarhus.</h2>
-              <p>
-                We welcome students, postdocs, clinicians, and computational collaborators who want
-                to work at the interface of imaging, proteomics, cancer biology, and precision medicine.
-              </p>
-            </div>
-            <a class="button" href="mailto:xiangzheng@biomed.au.dk">Contact the Lab</a>
-          </div>
+          <h2>We’re growing. More opportunities coming soon!</h2>
         </div>
       </div>
     </section>
