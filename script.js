@@ -189,6 +189,7 @@
     "2017 · International Trainee Scholarship Award, ATS Congress, America": "2017 · ATS 大会国际青年研究者奖学金，美国",
     "2017 · William MacNee Award, ERS Congress, Portugal": "2017 · ERS 大会 William MacNee 奖，葡萄牙",
     "We’re growing. More opportunities coming soon!": "团队正在发展壮大，更多机会即将发布！",
+    "Download video": "下载视频",
     "© Zheng Lab · Aarhus University": "© Zheng Lab · 奥胡斯大学",
     "Spatial Proteomics · Tumor Microenvironment · Precision Oncology": "空间蛋白质组学 · 肿瘤微环境 · 精准肿瘤学"
   };
@@ -208,6 +209,7 @@
     "Primary navigation": "主导航",
     "Display settings": "显示设置",
     "Lab highlights": "课题组亮点",
+    "Zheng Lab video": "Zheng Lab 视频",
     "Dr. Xiang Zheng profile": "郑翔博士简介",
     "Contact information": "联系信息",
     "Publication summary": "论文摘要",

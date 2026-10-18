@@ -681,6 +681,10 @@
     }
 
     .join {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 32px;
       margin: 72px 0 38px;
       padding: 42px;
       border-radius: 34px;
@@ -697,6 +701,15 @@
       font-size: clamp(1.8rem, 4vw, 3rem);
       line-height: 1.1;
       letter-spacing: -0.045em;
+    }
+
+    .join-video {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      height: auto;
+      border-radius: 20px;
+      background: #071827;
     }
 
     .cv-grid {
@@ -1015,7 +1028,8 @@
       .hero-grid,
       .section-head,
       .paper,
-      .cv-grid {
+      .cv-grid,
+      .join {
         grid-template-columns: 1fr;
       }
 
@@ -1625,6 +1639,19 @@
       <div class="shell">
         <div class="join">
           <h2>We’re growing. More opportunities coming soon!</h2>
+          <video
+            class="join-video"
+            width="1280"
+            height="720"
+            controls
+            playsinline
+            preload="metadata"
+            poster="assets/video/join-lab-poster.jpg"
+            aria-label="Zheng Lab video"
+          >
+            <source src="assets/video/join-lab.mp4" type="video/mp4">
+            <a href="assets/video/join-lab.mp4">Download video</a>
+          </video>
         </div>
       </div>
     </section>
