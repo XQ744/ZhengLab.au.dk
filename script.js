@@ -31,7 +31,6 @@
     "Representative Work": "代表性成果",
     "Platform & Equipment": "平台与设备",
     "Team": "团队成员",
-    "Join": "加入我们",
     "Aarhus University · Department of Biomedicine": "奥胡斯大学 · 生物医学系",
     "Spatial proteomics for": "空间蛋白质组学赋能",
     "precision oncology.": "精准肿瘤学。",
@@ -190,9 +189,6 @@
     "2017 · International Trainee Scholarship Award, ATS Congress, America": "2017 · ATS 大会国际青年研究者奖学金，美国",
     "2017 · William MacNee Award, ERS Congress, Portugal": "2017 · ERS 大会 William MacNee 奖，葡萄牙",
     "We’re growing. More opportunities coming soon!": "团队正在发展壮大，更多机会即将发布！",
-    "Join Zheng Lab in Aarhus.": "加入位于奥胡斯的 Zheng Lab。",
-    "We welcome students, postdocs, clinicians, and computational collaborators who want to work at the interface of imaging, proteomics, cancer biology, and precision medicine.": "我们欢迎希望在成像、蛋白质组学、肿瘤生物学与精准医学交叉领域开展工作的学生、博士后、临床医生和计算研究合作者。",
-    "Contact the Lab": "联系课题组",
     "© Zheng Lab · Aarhus University": "© Zheng Lab · 奥胡斯大学",
     "Spatial Proteomics · Tumor Microenvironment · Precision Oncology": "空间蛋白质组学 · 肿瘤微环境 · 精准肿瘤学"
   };
