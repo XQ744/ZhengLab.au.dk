@@ -765,6 +765,12 @@
       color: var(--muted);
     }
 
+    .publication-list a {
+      overflow-wrap: anywhere;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     .cv-highlight {
       padding: 18px;
       border: 1px solid var(--line);
@@ -1579,13 +1585,39 @@
             </div>
 
             <div class="cv-block">
-              <h3>Selected Publications</h3>
-              <ul class="cv-list">
-                <li>Zheng X#, Mund A, Mann M. <span>Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics. Molecular Cell, 2025.</span></li>
-                <li>Zheng X, Weigert A, et al. <span>The HDAC2-SP1 axis orchestrates protumor macrophage polarization. Cancer Research, 2023.</span></li>
-                <li>Weigert A, Zheng X, et al. <span>Fibrocytes boost tumor-supportive phenotypic switches in the lung cancer niche. Nature Communications, 2022.</span></li>
-                <li>Zheng X, Mansouri S, et al. <span>Metabolism in tumor-associated macrophages. European Respiratory Review, 2020.</span></li>
-                <li>Zheng X, Turkowski K, et al. <span>Redirecting tumor-associated macrophages to become tumoricidal effectors. Oncotarget, 2017.</span></li>
+              <h3>10 Selected Publications</h3>
+              <p class="paper-meta">(*: First Author; #: Corresponding Author)</p>
+              <ul class="cv-list publication-list">
+                <li>
+                  <strong>Xiang Zheng*, #</strong>, Andreas Mund, Matthias Mann: <span>Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics. <strong><em>Molecular Cell</em></strong>, 2025, doi: <a href="https://doi.org/10.1016/j.molcel.2024.12.023" target="_blank" rel="noopener noreferrer">10.1016/j.molcel.2024.12.023</a></span>
+                </li>
+                <li>
+                  <strong>Xiang Zheng*</strong>, Andreas Weigert, Simone Reu, Stefan Guenther, Siavash Mansouri, Birgit Bassaly, Stefan Gattenlöhner, Friedrich Grimminger, Soni Pullamsetti, Werner Seeger, Hauke Winter, Rajkumar Savai: <span>Spatial density and distribution of tumor-associated macrophages predict survival in non-small-cell lung carcinoma. <strong><em>Cancer Research</em></strong>, 2020. doi: <a href="https://doi.org/10.1158/0008-5472.CAN-20-0069" target="_blank" rel="noopener noreferrer">10.1158/0008-5472.CAN-20-0069</a> <strong>(as a journal cover article)</strong></span>
+                </li>
+                <li>
+                  <strong>Xiang Zheng*,#</strong>, Mariavittoria d'Acierno, Lena K. Rosenbaek, Markus Rinschen, Qi Wu, Robert A. Fenton#. <span>Deep visual proteomics reveals distinct proximal tubular and glomerular injury programs in experimental diabetic kidney disease. Preprint, bioRxiv, 2026. doi: <a href="https://doi.org/10.64898/2026.09.01.748754" target="_blank" rel="noopener noreferrer">https://doi.org/10.64898/2026.09.01.748754</a>.</span>
+                </li>
+                <li>
+                  <strong>Xiang Zheng*</strong>, Poonam Sarode*, Andreas Weigert, Kati Turkowski, Prakash Chelladurai, Stefan Günther, Carsten Kuenne, Hauke Winter, Albrecht Stenzinger, Simone Reu, Friedrich Grimminger, Thorsten Stiewe, Werner Seeger, Soni Savai Pullamsetti, Rajkumar Savai: <span>The HDAC2-SP1 axis orchestrates protumor macrophage polarization. <strong><em>Cancer Research</em></strong>, 2023. doi: <a href="https://doi.org/10.1158/0008-5472.CAN-22-1270" target="_blank" rel="noopener noreferrer">10.1158/0008-5472.CAN-22-1270</a></span>
+                </li>
+                <li>
+                  Andreas Weigert*, <strong>Xiang Zheng*</strong>, Alina Nenzel*, Kati Turkowski, Stefan Günther, Elisabeth Strack, Evelyn Sirait-Fischer, Eiman Elwakeel, Ivan M. Kur, Vandana S. Nikam, Chanil Valasarajan, Hauke Winter, Alexander Wissgott, Robert Voswinkel, Friedrich Grimminger, Bernhard Brüne, Werner Seeger, Soni Savai Pullamsetti, Rajkumar Savai: <span>Fibrocytes boost tumor-supportive phenotypic switches in the lung cancer niche via the endothelin system. <strong><em>Nature Communications</em></strong>, 2022. doi: <a href="https://doi.org/10.1038/s41467-022-33458-8" target="_blank" rel="noopener noreferrer">10.1038/s41467-022-33458-8</a></span>
+                </li>
+                <li>
+                  <strong>Xiang Zheng*, #</strong>, Andreas Mund, Matthias Mann: <span>Protocol for spatial proteomic profiling of tonsil cancer microenvironments using multiplexed imaging-powered Deep Visual Proteomics (mipDVP). <strong><em>Star Protocols</em></strong>, 2025, doi: <a href="https://doi.org/10.1016/j.xpro.2025.103901" target="_blank" rel="noopener noreferrer">10.1016/j.xpro.2025.103901</a></span>
+                </li>
+                <li>
+                  <strong>Xiang Zheng*</strong>, Siavash Mansouri*, Annika Krager, Friedrich Grimminger, Werner Seeger, Soni S Pullamsetti, Craig E Wheelock, Rajkumar Savai: <span>Metabolism in tumor-associated macrophages: a quid pro quo with the tumor microenvironment. <strong><em>European Respiratory Review</em></strong>, 2020. doi: <a href="https://doi.org/10.1183/16000617.0134-2020" target="_blank" rel="noopener noreferrer">10.1183/16000617.0134-2020</a></span>
+                </li>
+                <li>
+                  Poonam Sarode, <strong>Xiang Zheng</strong>, Georgia A. Giotopoulou, Andreas Weigert, Carste Kuenne, Stefan Günther, Aleksandra Friedrich, Stefan Gattenlöhner, Thorsten Stiewe, Bernhard Brüne, Friedrich Grimminger, Georgios T. Stathopoulos, Soni Savai Pullamsetti, Werner Seeger, Rajkumar Savai: <span>Tumor-associated macrophage-specific β-catenin-FOSL2-ARID5A axis is a major driver of macrophage reprogramming and progression of lung cancer. <strong><em>Science Advances</em></strong>, 2020. doi: <a href="https://doi.org/10.1126/sciadv.aaz6105" target="_blank" rel="noopener noreferrer">10.1126/sciadv.aaz6105</a></span>
+                </li>
+                <li>
+                  Ylia Salazar, <strong>Xiang Zheng</strong>, David Brunn, Hartmann Raifer, Felix Picard, Yajuan Zhang, Hauke Winter, Stefan Guenther, Andreas Weigert, Benno Weigmann, Laure Dumoutier, Jean-Christophe Renauld, Ari Waisman, Anja Schmall, Amanda Tufman, Ludger Fink, Bernhard Brüne, Tobias Bopp, Friedrich Grimminger, Werner Seeger, Soni Savai Pullamsetti, Magdalena Huber, Rajkumar Savai: <span>Microenvironmental Th9- and Th17- lymphocytes induce metastatic spreading in lung cancer. <strong><em>Journal of Clinical Investigation</em></strong>, 2020;130(7):3560-3575 <strong>(as a journal cover article)</strong></span>
+                </li>
+                <li>
+                  <strong>Xiang Zheng*</strong>, Kati Turkowski, Javier Mora, Bernhard Brüne, Werner Seeger, Andreas Weigert, Rajkumar Savai: <span>Redirecting tumor-associated macrophages to become tumoricidal effectors as a novel strategy for cancer therapy. <strong><em>Oncotarget</em></strong>, 2017. doi: <a href="https://doi.org/10.18632/oncotarget.17061" target="_blank" rel="noopener noreferrer">10.18632/oncotarget.17061</a></span>
+                </li>
               </ul>
             </div>
           </article>
