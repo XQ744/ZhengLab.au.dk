@@ -861,7 +861,12 @@
     }
 
     .team-portraits.single {
-      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+
+    .team-portraits.single img {
+      grid-column: 1;
+      grid-row: 1;
     }
 
     .team-names {
@@ -877,6 +882,11 @@
     .team-names li + li {
       padding-top: 9px;
       border-top: 1px solid var(--line);
+    }
+
+    .team-names span {
+      color: var(--muted);
+      font-weight: 500;
     }
 
     .space-grid {
@@ -1105,10 +1115,6 @@
         grid-template-columns: 1fr;
       }
 
-      .team-portraits.single {
-        max-width: 240px;
-      }
-
       .paper-main,
       .cv-main,
       .join {
@@ -1205,7 +1211,7 @@
               <span>international awards</span>
             </div>
             <div class="stat">
-              <strong>≈17M DKK</strong>
+              <strong>17M DKK</strong>
               <span>secured across 8 competitive research grants</span>
             </div>
           </div>
@@ -1435,7 +1441,21 @@
               <img src="assets/members/qu-xu.webp" alt="Dr. Qu Xu" width="566" height="726" loading="lazy" decoding="async">
             </div>
             <ul class="team-names">
-              <li>Dr. Qu Xu</li>
+              <li>Dr. Qu Xu <span>(Computational Systems Biologist)</span></li>
+            </ul>
+          </article>
+          <article class="team-card">
+            <h3>Technical staff</h3>
+            <div class="team-portraits">
+              <img src="assets/members/technical-staff-01.webp" alt="Zheng Lab technical staff portrait 1" width="582" height="800" loading="lazy" decoding="async">
+              <img src="assets/members/technical-staff-03.webp" alt="Zheng Lab technical staff portrait 3" width="158" height="210" loading="lazy" decoding="async">
+              <img src="assets/members/technical-staff-02.webp" alt="Zheng Lab technical staff portrait 2" width="640" height="798" loading="lazy" decoding="async">
+            </div>
+            <ul class="team-names">
+              <li>Inger Merete S. Paulsen <span>(Histology Specialist)</span></li>
+              <li>Peter Bjerge <span>(Organ-on-Chip Engineer)</span></li>
+              <li>Tina Drejer <span>(Cell Culture Specialist)</span></li>
+              <li>Christian V. Westberg <span>(Molecular Biology Specialist)</span></li>
             </ul>
           </article>
           <article class="team-card">
@@ -1451,20 +1471,6 @@
               <li>Magnus Bæk Bundgaard</li>
               <li>Yida Wang</li>
               <li>Samyak Suri</li>
-            </ul>
-          </article>
-          <article class="team-card">
-            <h3>Technical staff</h3>
-            <div class="team-portraits">
-              <img src="assets/members/technical-staff-01.webp" alt="Zheng Lab technical staff portrait 1" width="582" height="800" loading="lazy" decoding="async">
-              <img src="assets/members/technical-staff-02.webp" alt="Zheng Lab technical staff portrait 2" width="640" height="798" loading="lazy" decoding="async">
-              <img src="assets/members/technical-staff-03.webp" alt="Zheng Lab technical staff portrait 3" width="158" height="210" loading="lazy" decoding="async">
-            </div>
-            <ul class="team-names">
-              <li>Inger Merete S. Paulsen</li>
-              <li>Cassandra Bennetzen</li>
-              <li>Tina Drejer</li>
-              <li>Christian V. Westberg</li>
             </ul>
           </article>
         </div>
@@ -1541,28 +1547,6 @@
             </div>
 
             <div class="cv-block">
-              <h3>Research Collaborations</h3>
-              <ul class="cv-list">
-                <li>Prof. Matthias Mann (University of Copenhagen / MPI Biochemistry) · mipDVP platform development</li>
-                <li>Prof. Robert A. Fenton (Aarhus University) · renal proteomics and the first extension of mipDVP beyond oncology</li>
-                <li>Prof. Bastian Schilling and Prof. Andreas Weigert (Goethe University Frankfurt) · skin lymphoma and lung cancer immunity</li>
-                <li>Prof. Lars Fugger (University of Oxford) · neuro-immune and neurodegenerative disease proteomics</li>
-                <li>Prof. Ulf Ahlgren (Umeå University) and Assoc. Prof. Melinda Rezeli (Lund University) · 3D volumetric spatial proteomics</li>
-                <li>Prof. Mats Nilsson (Stockholm University) and Assoc. Prof. Carina Strell (University of Bergen) · T-cell clone-resolved spatial multiomics</li>
-              </ul>
-            </div>
-
-            <div class="cv-block">
-              <h3>Leadership and Team Development</h3>
-              <ul class="cv-list">
-                <li>2026 · Recruited the first computational postdoctoral researcher and established an independent research team.</li>
-                <li>2026 · Participating in one-to-one coaching through the LEO Foundation Leadership Coaching Programme.</li>
-                <li>2025–2026 · Coordinating role in the HALRIC infrastructure consortium (Aarhus–Lund–Umeå–Miltenyi Biotec), integrating 3D imaging into mipDVP.</li>
-                <li>2026 · Lead applicant for a Nordic Cancer Union grant application (Aarhus–Stockholm–Bergen), integrating spatial TCR clonotyping with mipDVP.</li>
-              </ul>
-            </div>
-
-            <div class="cv-block">
               <h3>Dissemination and Academic Service</h3>
               <ul class="cv-list">
                 <li>42 selected or invited lectures worldwide, including a plenary oral presentation at HUPO Congress 2025 (Toronto), an invited presentation at EACR 2025 (Portugal), and lectures at Umeå University, Lund University, University of Copenhagen, and Karolinska Institute.</li>
@@ -1628,6 +1612,7 @@
               <p>8 competitive grants · approximately 17 million DKK secured</p>
               <ul class="cv-list">
                 <li>LEO Foundation, Dr Abildgaard Fellowship<br><span>Personal fellowship / starting grant · 12,000,000 DKK · 2026–2030</span></li>
+                <li>Danish Cancer Society, Young Talented Cancer Researchers<br><span>Personal research grant · 3,750,000 DKK · 2027–2030</span></li>
                 <li>Hanseatic Life Science Research Infrastructure Consortium (HALRIC)<br><span>Project / infrastructure grant · 600,000 DKK · 2025–2026</span></li>
                 <li>Fabrikant Einar Willumsens Mindelegat<br><span>Project grant · 80,000 DKK · 2025–2026</span></li>
                 <li>LEO Fellows Leadership Coaching Programme<br><span>Career grant · 90,000 DKK · 2026</span></li>
