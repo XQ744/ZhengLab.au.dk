@@ -391,10 +391,10 @@
     }
 
     .profile-contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 110px;
-      gap: 14px;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      gap: 16px 22px;
     }
 
     .contact-email {
@@ -416,12 +416,6 @@
       background: rgba(18, 184, 166, 0.16);
     }
 
-    .contact-email-note {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 0.86rem;
-    }
-
     .contact-orcid {
       margin: 8px 0 0;
       color: var(--ink);
@@ -440,7 +434,6 @@
     }
 
     .contact-qr {
-      justify-self: end;
       text-align: center;
     }
 
@@ -459,6 +452,16 @@
       font-size: 0.76rem;
       font-weight: 700;
       letter-spacing: 0.03em;
+    }
+
+    .profile-video {
+      display: block;
+      width: 240px;
+      max-width: 100%;
+      height: auto;
+      margin: 0;
+      border-radius: 16px;
+      background: #071827;
     }
 
     section {
@@ -1064,10 +1067,6 @@
         height: 460px;
       }
 
-      .profile-contact-grid {
-        grid-template-columns: minmax(0, 1fr) 100px;
-      }
-
       .contact-qr img {
         width: 100px;
         height: 100px;
@@ -1123,14 +1122,6 @@
 
       .profile-photo {
         height: 400px;
-      }
-
-      .profile-contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-qr {
-        justify-self: start;
       }
 
       .contact-qr img {
@@ -1230,7 +1221,6 @@
             <div class="profile-contact-grid">
               <div>
                 <a class="contact-email" href="mailto:xiangzheng@biomed.au.dk">xiangzheng@biomed.au.dk</a>
-                <p class="contact-email-note">Email for collaborations, speaking invitations, and student inquiries.</p>
                 <p class="contact-orcid">
                   Orcid:
                   <a href="https://orcid.org/0000-0001-7588-825X" target="_blank" rel="noopener noreferrer">0000-0001-7588-825X</a>
@@ -1240,6 +1230,15 @@
                 <img src="LinkedIn .jpg" alt="Dr. Xiang Zheng LinkedIn QR code">
                 <p>Scan for LinkedIn</p>
               </div>
+              <video
+                class="profile-video"
+                controls
+                playsinline
+                preload="metadata"
+                aria-label="Miltenyi video"
+              >
+                <source src="Miltenyi.MP4" type="video/mp4">
+              </video>
             </div>
           </div>
         </aside>
