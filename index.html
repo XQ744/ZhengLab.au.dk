@@ -63,10 +63,6 @@
         var(--bg);
     }
 
-    html[lang="zh-CN"] body {
-      font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", Inter, ui-sans-serif, system-ui, sans-serif;
-    }
-
     a {
       color: inherit;
       text-decoration: none;
@@ -741,6 +737,51 @@
       background: rgba(255, 255, 255, 0.86);
     }
 
+    .cv-toggle {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--navy);
+      font: inherit;
+      font-size: 1.24rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .cv-toggle-icon {
+      flex: 0 0 auto;
+      width: 0.55em;
+      height: 0.55em;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: translateY(-0.1em) rotate(45deg);
+    }
+
+    .cv-toggle[aria-expanded="true"] .cv-toggle-icon {
+      transform: translateY(0.15em) rotate(225deg);
+    }
+
+    .cv-side .cv-panel {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cv-main .cv-panel {
+      margin-top: 8px;
+    }
+
+    .cv-panel[hidden] {
+      display: none;
+    }
+
     .cv-block + .cv-block {
       margin-top: 24px;
       padding-top: 24px;
@@ -1170,9 +1211,9 @@
           <a href="#cv">CV</a>
         </nav>
         <div class="site-controls" aria-label="Display settings">
-          <button class="control-button" id="language-toggle" type="button" aria-label="切换为中文" title="切换为中文">
-            <span class="control-icon" aria-hidden="true">文</span>
-            <span class="control-label" id="language-label">中文</span>
+          <button class="control-button" id="language-toggle" type="button" aria-label="Skift til dansk" title="Skift til dansk">
+            <span class="control-icon" aria-hidden="true">D</span>
+            <span class="control-label" id="language-label">Dansk</span>
           </button>
           <button class="control-button" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" aria-pressed="false">
             <span class="control-icon" id="theme-icon" aria-hidden="true">☾</span>
@@ -1498,6 +1539,11 @@
 
         <div class="cv-grid">
           <article class="cv-main">
+            <button class="cv-toggle" type="button" aria-expanded="false" aria-controls="cv-profile-panel">
+              <span>Academic profile</span>
+              <span class="cv-toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="cv-panel" id="cv-profile-panel" hidden>
             <div class="cv-block">
               <h3>Overview</h3>
               <p>
@@ -1609,9 +1655,15 @@
                 </li>
               </ul>
             </div>
+            </div>
           </article>
 
           <aside class="cv-side" aria-label="Research funding and awards">
+            <button class="cv-toggle" type="button" aria-expanded="false" aria-controls="cv-funding-panel">
+              <span>Research funding and awards</span>
+              <span class="cv-toggle-icon" aria-hidden="true"></span>
+            </button>
+            <div class="cv-panel" id="cv-funding-panel" hidden>
             <div class="cv-highlight">
               <h3>Research Funding</h3>
               <p>8 competitive grants · approximately 17 million DKK secured</p>
@@ -1649,6 +1701,7 @@
                 <li>2017 · International Trainee Scholarship Award, ATS Congress, America</li>
                 <li>2017 · William MacNee Award, ERS Congress, Portugal</li>
               </ul>
+            </div>
             </div>
           </aside>
         </div>

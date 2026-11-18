@@ -21,214 +21,217 @@
 
   const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   const initialTheme = storage.get("zheng-lab-theme") || (systemPrefersDark ? "dark" : "light");
-  const initialLanguage = storage.get("zheng-lab-language") === "zh-CN" ? "zh-CN" : "en";
+  const initialLanguage = storage.get("zheng-lab-language") === "da" ? "da" : "en";
 
   root.dataset.theme = initialTheme;
   root.lang = initialLanguage;
 
-  const zh = {
-    "Research": "研究方向",
-    "Representative Work": "代表性成果",
-    "Platform & Equipment": "平台与设备",
-    "Team": "团队成员",
-    "Aarhus University · Department of Biomedicine": "奥胡斯大学 · 生物医学系",
-    "Spatial proteomics for": "空间蛋白质组学赋能",
-    "precision oncology.": "精准肿瘤学。",
-    "Dr. Xiang Zheng leads translational spatial proteomics programs that decode tumor-immune ecosystems, discover biomarkers of therapy resistance, and bridge multiplexed imaging with deep proteomic profiling for precision oncology.": "郑翔博士带领转化空间蛋白质组学研究，解析肿瘤—免疫生态系统，发现治疗耐药生物标志物，并将多重成像与深度蛋白质组分析相结合，推动精准肿瘤学发展。",
-    "View Representative Work": "查看代表性成果",
-    "Explore Research": "了解研究方向",
-    "publications (11 first-author, 4 corresponding-author)": "篇论文（11 篇第一作者，4 篇通讯作者）",
-    "invited or selected international conference talks": "次受邀或入选国际会议报告",
-    "17M DKK": "1,700万 DKK",
-    "secured across 8 competitive research grants": "来自 8 项竞争性科研资助",
-    "Dr. Xiang Zheng": "郑翔博士",
-    "Group Leader and LEO Foundation Dr. Abildgaard Fellow": "课题组负责人、LEO Foundation Dr. Abildgaard Fellow",
-    "Contact": "联系方式",
-    "Orcid:": "ORCID：",
-    "Scan for LinkedIn": "扫码访问 LinkedIn",
-    "Research Focus": "研究方向",
-    "Understanding disease as a spatially organized ecosystem.": "从空间组织的生态系统视角理解疾病。",
-    "The lab combines clinical questions with high-dimensional imaging, laser microdissection, mass spectrometry, and computational interpretation to resolve molecular programs inside tissue.": "课题组围绕临床问题，结合高维成像、激光显微切割、质谱分析和计算解析，揭示组织内部的分子程序。",
-    "Tumor-Immune Crosstalk": "肿瘤—免疫互作",
-    "Decode how cancer cells, macrophages, T cells, and stromal neighborhoods interact to shape immune evasion and therapy response.": "解析癌细胞、巨噬细胞、T 细胞与基质微环境如何相互作用，并共同影响免疫逃逸和治疗反应。",
-    "Spatial Proteomics": "空间蛋白质组学",
-    "Build and apply mipDVP workflows that connect multiplexed tissue images with deep proteomic measurements at spatially defined cell populations.": "开发并应用 mipDVP 工作流程，将多重组织成像与空间定义细胞群体的深度蛋白质组测量相连接。",
-    "Precision Medicine": "精准医学",
-    "Transform archived and clinical tissues into molecular maps that reveal biomarkers, vulnerabilities, and patient-specific therapeutic hypotheses.": "将存档及临床组织转化为分子图谱，发现生物标志物、治疗脆弱点和患者特异性治疗假设。",
-    "Highly multiplexed imaging and deep visual proteomics.": "高通量多重成像与深度视觉蛋白质组学。",
-    "The provided representative article introduces mipDVP and applies it to colorectal and tonsil cancer tissues to reveal spatially regulated tumor-immune interactions.": "该代表性论文介绍了 mipDVP，并将其应用于结直肠癌和扁桃体癌组织，揭示受空间调控的肿瘤—免疫相互作用。",
-    "Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics": "利用高通量多重成像与深度视觉蛋白质组学解析功能性肿瘤—免疫互作",
-    "Developed an advanced strategy combining multiplexed imaging, single-cell laser microdissection, and sensitive mass spectrometry.": "建立了结合多重成像、单细胞激光显微切割和高灵敏度质谱的先进策略。",
-    "Identified 21 cell populations and thousands of proteins while preserving spatial tissue context.": "在保留组织空间背景的同时，鉴定出 21 类细胞群体和数千种蛋白质。",
-    "Revealed an immunosuppressive macrophage barrier that may impede T-cell infiltration in cold tumors.": "揭示了可能阻碍 T 细胞浸润冷肿瘤的免疫抑制性巨噬细胞屏障。",
-    "Discovered spatial T-cell adaptations in hypoxic tumor regions and potential immunotherapy targets.": "发现缺氧肿瘤区域中的 T 细胞空间适应机制及潜在免疫治疗靶点。",
-    "Open Full Paper PDF": "打开论文全文 PDF",
-    "A platform for reading tissue architecture and proteomic depth together, enabling spatial insights for personalized oncology.": "一个同时解析组织结构与深度蛋白质组信息的平台，为个体化肿瘤学提供空间层面的洞见。",
-    "Platform": "平台",
-    "A tissue-to-proteome workflow built for clinical questions.": "面向临床问题的组织到蛋白质组工作流程。",
-    "The design emphasizes the lab's methodological identity: spatial context first, then deep molecular profiling, then translational interpretation.": "该流程体现课题组的方法学特色：先保留空间背景，再开展深度分子分析，最终进行转化医学解读。",
-    "Multiplexed Imaging": "多重成像",
-    "Visualize tumor, immune, and stromal markers across intact clinical tissue sections.": "在完整临床组织切片中呈现肿瘤、免疫与基质标志物。",
-    "Spatial Selection": "空间选择",
-    "Choose cell populations and niches based on tissue context and biological hypotheses.": "根据组织空间背景和生物学假设选择细胞群体及微环境。",
-    "Proteomic Profiling": "蛋白质组分析",
-    "Measure thousands of proteins from selected cells using sensitive mass spectrometry.": "利用高灵敏度质谱测量所选细胞中的数千种蛋白质。",
-    "Clinical Translation": "临床转化",
-    "Identify biomarkers, immune adaptations, and therapeutic targets for precision medicine.": "发现精准医学所需的生物标志物、免疫适应机制和治疗靶点。",
-    "Research Infrastructure": "科研基础设施",
-    "Our spaces and scientific equipment.": "我们的实验空间与科研设备。",
-    "Based in the Skou Building at Aarhus University, our research infrastructure brings together automated multiplexing, laser microdissection, mass spectrometry, and spatial metabolomics.": "课题组位于奥胡斯大学 Skou 大楼，科研基础设施涵盖自动化多重分析、激光显微切割、质谱分析和空间代谢组学。",
-    "The Skou Building": "Skou 大楼",
-    "Main hub": "主要基地",
-    "Lab space": "实验室空间",
-    "Automated multiplexing": "自动化多重分析",
-    "Laser microdissection": "激光显微切割",
-    "Mass spectrometry": "质谱分析",
-    "Spatial metabolomics": "空间代谢组学",
-    "Our Team": "团队成员",
-    "Meet the people behind Zheng Lab.": "认识 Zheng Lab 的团队成员。",
-    "Our independent research group at Aarhus University is backed by a 12 million DKK LEO Foundation starting grant. Together, we study spatial proteomics for precision oncology and dermatology.": "我们是奥胡斯大学的独立研究团队，获得 LEO Foundation 1,200 万丹麦克朗启动经费支持，聚焦空间蛋白质组学在精准肿瘤学和皮肤病学中的应用。",
-    "Postdoc": "博士后",
-    "Research trainees": "科研实习生",
-    "Technical staff": "技术人员",
-    "(Computational Systems Biologist)": "（计算系统生物学家）",
-    "(Histology Specialist)": "（组织学专家）",
-    "(Organ-on-Chip Engineer)": "（器官芯片工程师）",
-    "(Cell Culture Specialist)": "（细胞培养专家）",
-    "(Molecular Biology Specialist)": "（分子生物学专家）",
-    "CV / About": "简历 / 关于",
-    "Academic profile, leadership, and translational impact.": "学术经历、团队领导与转化影响力。",
-    "Xiang Zheng, PhD, is a Group Leader and LEO Foundation Dr. Abildgaard Fellow at Aarhus University, advancing spatial proteomics, immune microenvironment biology, and precision medicine.": "郑翔博士现任奥胡斯大学课题组负责人、LEO Foundation Dr. Abildgaard Fellow，致力于推动空间蛋白质组学、免疫微环境生物学和精准医学研究。",
-    "Overview": "概览",
-    "Author of 22 publications, including 11 as first author and 4 as corresponding author. Secured 8 competitive research grants totalling approximately 17 million DKK, received travel or award-based funding on 9 occasions, delivered 42 invited or selected international conference talks, and received 20 international awards.": "发表论文 22 篇，其中第一作者论文 11 篇、通讯作者论文 4 篇；获得 8 项竞争性科研资助，总额约 1,700 万丹麦克朗；获得 9 次差旅或奖励类资助；完成 42 次受邀或入选国际会议报告，并获得 20 项国际奖项。",
-    "Academic Appointments": "工作经历",
-    "2026–present · Group Leader, LEO Foundation Dr. Abildgaard Fellow, Aarhus University": "2026–至今 · 奥胡斯大学课题组负责人、LEO Foundation Dr. Abildgaard Fellow",
-    "2024–2026 · Assistant Professor, Aarhus University": "2024–2026 · 奥胡斯大学助理教授",
-    "(mentor: Prof. Robert A. Fenton)": "（导师：Robert A. Fenton 教授）",
-    "2021–2024 · Postdoctoral Researcher, University of Copenhagen": "2021–2024 · 哥本哈根大学博士后研究员",
-    "(mentor: Prof. Matthias Mann)": "（导师：Matthias Mann 教授）",
-    "Education": "教育背景",
-    "2021 · PhD, Human Biomedicine, Max Planck Institute, Bad Nauheim, Germany": "2021 · 德国巴特瑙海姆马克斯·普朗克研究所，人类生物医学博士",
-    "2014 · MSc, Molecular Biology and Oncology, Peking University, Beijing, China": "2014 · 北京大学分子生物学与肿瘤学硕士",
-    "2011 · Bachelor of Clinical Medicine, Nanchang University, Nanchang, China": "2011 · 南昌大学临床医学学士",
-    "Scientific Focus Areas": "科研方向",
-    "Spatial proteomics:": "空间蛋白质组学：",
-    "developed mipDVP, now expanding to 3D and immune clone-resolved spatial multiomics.": "开发 mipDVP 平台，目前正拓展至三维空间多组学和免疫克隆分辨空间多组学。",
-    "Immune microenvironment:": "免疫微环境：",
-    "high-resolution spatial profiling of tumour and inflammatory immune ecosystems.": "对肿瘤及炎症性免疫生态系统进行高分辨率空间分析。",
-    "Computational disease modeling:": "计算疾病建模：",
-    "AI-driven integration of spatial omics data to predict disease progression and treatment response.": "利用人工智能整合空间组学数据，预测疾病进展和治疗反应。",
-    "Precision medicine:": "精准医学：",
-    "translating spatial biomarkers into clinical diagnostics and therapeutic targets.": "将空间生物标志物转化为临床诊断工具和治疗靶点。",
-    "Teaching and Supervision": "教学与人才培养",
-    "Supervised or co-supervised 12 junior researchers: 4 Bachelor's, 2 Master's, 2 PhD students (co-supervision), 1 postdoctoral researcher, and 3 laboratory technicians.": "指导或共同指导 12 名青年研究人员，包括 4 名本科生、2 名硕士生、2 名博士生（共同指导）、1 名博士后和 3 名实验技术人员。",
-    "Research-based teaching in Medical Biochemistry Lab Exercises (approximately 530 Bachelor students annually), Histology, Immunology, and Single-Cell Multiomics.": "承担医学本科生物化学实验课（每年约 530 名本科生）、组织学、免疫学及单细胞多组学等研究型教学。",
-    "Invited lecturer and co-designer of Spatial Proteomics courses for PhD students and postdocs at Aarhus University and Alamein International University.": "受邀授课并共同设计面向奥胡斯大学和阿拉曼国际大学博士生及博士后的空间蛋白质组学课程。",
-    "Completed University Pedagogy, Aarhus University (2025), and Introduction to University Pedagogy, University of Copenhagen (2023); ongoing PhD Supervision Course, Aarhus University (2026).": "完成奥胡斯大学高校教学法课程（2025）及哥本哈根大学高校教学法导论课程（2023）；正在参加奥胡斯大学博士生指导课程（2026）。",
-    "Developed and shared SOPs for multiplexed immunofluorescence, laser microdissection, and spatial data analysis.": "开发并共享多重免疫荧光、激光显微切割和空间数据分析标准操作流程。",
-    "Dissemination and Academic Service": "学术传播与专业服务",
-    "42 selected or invited lectures worldwide, including a plenary oral presentation at HUPO Congress 2025 (Toronto), an invited presentation at EACR 2025 (Portugal), and lectures at Umeå University, Lund University, University of Copenhagen, and Karolinska Institute.": "在全球完成 42 次入选或受邀报告，包括 HUPO Congress 2025（多伦多）大会报告、EACR 2025（葡萄牙）特邀报告，以及在于默奥大学、隆德大学、哥本哈根大学和卡罗琳斯卡学院的受邀讲座。",
-    "Advisory Board Member, HUPO; Editorial Board Member,": "HUPO 顾问委员会委员；",
-    "; Ambassador, EACR; Founding Member, International Academic Association of Targetome (IAAT); Editorial Advisory Board Member,": "编委；EACR 大使；国际靶标组学学术协会（IAAT）创始会员；",
-    ".": "编委会委员。",
-    "Professional memberships: EORTC, AACR, DSBMB, HUPO, and SPS.": "专业学会会员：EORTC、AACR、DSBMB、HUPO 和 SPS。",
-    "102 peer-review reports for 20+ journals and funding bodies, including": "为 20 余种期刊及资助机构完成 102 份同行评审报告，包括",
-    ", and the Swiss National Science Foundation; book proposal reviewer, Elsevier (2026).": "，以及瑞士国家科学基金会；2026 年担任 Elsevier 图书提案评审人。",
-    "Co-organiser, Spatial Seminar, Aarhus (2025, 80+ international participants); contributor to the Nordic Alliance for Single-Cell and Spatial Analysis (Denmark–Sweden–Norway, 2026).": "共同组织奥胡斯 Spatial Seminar（2025，80 余名国际参会者）；参与北欧单细胞与空间分析联盟（丹麦—瑞典—挪威，2026）。",
-    "Entrepreneurship and Industry Collaboration": "创业与产业合作",
-    "Co-Founder, InnovEdged AB (2024–present, with Dr. Jianning Zhao), developing interpretable machine-learning tools that make spatial proteomics analysis more accessible to clinical and translational users.": "InnovEdged AB 联合创始人（2024–至今，与赵建宁博士共同创立），开发可解释机器学习工具，降低临床和转化研究用户使用空间蛋白质组分析的门槛。",
-    "Miltenyi Biotec (PI, EU HALRIC) · 3D imaging integration": "Miltenyi Biotec（EU HALRIC 项目负责人）· 三维成像整合",
-    "Leica Microsystems (with Dr. Falk Schlaudraff) · laser microdissection software optimisation": "Leica Microsystems（与 Falk Schlaudraff 博士合作）· 激光显微切割软件优化",
-    "Single-Cell Technologies (with Dr. Ferenc Kovacs) · BIAS software algorithm development": "Single-Cell Technologies（与 Ferenc Kovacs 博士合作）· BIAS 软件算法开发",
-    "HiComp · skin-on-chip and microfluidic platforms": "HiComp · 皮肤芯片与微流控平台",
-    "10 Selected Publications": "10 篇代表性论文",
-    "(*: First Author; #: Corresponding Author)": "（*：第一作者；#：通讯作者）",
-    "Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics.": "利用高通量多重成像与深度视觉蛋白质组学解析功能性肿瘤—免疫互作。",
-    "Spatial density and distribution of tumor-associated macrophages predict survival in non-small-cell lung carcinoma.": "肿瘤相关巨噬细胞的空间密度与分布可预测非小细胞肺癌患者的生存。",
-    "Deep visual proteomics reveals distinct proximal tubular and glomerular injury programs in experimental diabetic kidney disease. Preprint, bioRxiv, 2026. doi:": "深度视觉蛋白质组学揭示实验性糖尿病肾病中近端肾小管与肾小球的不同损伤程序。预印本，bioRxiv，2026。doi:",
-    "The HDAC2-SP1 axis orchestrates protumor macrophage polarization.": "HDAC2–SP1 轴调控促肿瘤巨噬细胞极化。",
-    "Fibrocytes boost tumor-supportive phenotypic switches in the lung cancer niche via the endothelin system.": "纤维细胞通过内皮素系统促进肺癌微环境中的肿瘤支持性表型转换。",
-    "Protocol for spatial proteomic profiling of tonsil cancer microenvironments using multiplexed imaging-powered Deep Visual Proteomics (mipDVP).": "利用多重成像驱动的深度视觉蛋白质组学（mipDVP）对扁桃体癌微环境进行空间蛋白质组分析的实验流程。",
-    "Metabolism in tumor-associated macrophages: a quid pro quo with the tumor microenvironment.": "肿瘤相关巨噬细胞的代谢：与肿瘤微环境的互惠交换。",
-    "Tumor-associated macrophage-specific β-catenin-FOSL2-ARID5A axis is a major driver of macrophage reprogramming and progression of lung cancer.": "肿瘤相关巨噬细胞特异性 β-catenin–FOSL2–ARID5A 轴是驱动巨噬细胞重编程与肺癌进展的主要因素。",
-    "Microenvironmental Th9- and Th17- lymphocytes induce metastatic spreading in lung cancer.": "微环境中的 Th9 和 Th17 淋巴细胞诱导肺癌的转移扩散。",
-    "Redirecting tumor-associated macrophages to become tumoricidal effectors as a novel strategy for cancer therapy.": "重塑肿瘤相关巨噬细胞，使其成为杀伤肿瘤的效应细胞，为癌症治疗提供新策略。",
-    "(as a journal cover article)": "（期刊封面文章）",
-    "Research Funding": "科研资助",
-    "8 competitive grants · approximately 17 million DKK secured": "8 项竞争性资助 · 总额约 1,700 万丹麦克朗",
-    "LEO Foundation, Dr Abildgaard Fellowship": "LEO Foundation，Dr Abildgaard Fellowship",
-    "Personal fellowship / starting grant · 12,000,000 DKK · 2026–2030": "个人基金 / 启动经费 · 12,000,000 丹麦克朗 · 2026–2030",
-    "Danish Cancer Society, Young Talented Cancer Researchers": "丹麦癌症协会，Young Talented Cancer Researchers",
-    "Personal research grant · 3,750,000 DKK · 2027–2030": "个人科研基金 · 3,750,000 丹麦克朗 · 2027–2030",
-    "Hanseatic Life Science Research Infrastructure Consortium (HALRIC)": "汉萨生命科学研究基础设施联盟（HALRIC）",
-    "Project / infrastructure grant · 600,000 DKK · 2025–2026": "项目 / 基础设施基金 · 600,000 丹麦克朗 · 2025–2026",
-    "Project grant · 80,000 DKK · 2025–2026": "项目基金 · 80,000 丹麦克朗 · 2025–2026",
-    "Career grant · 90,000 DKK · 2026": "职业发展基金 · 90,000 丹麦克朗 · 2026",
-    "Project grant · 90,000 DKK · 2026–2027": "项目基金 · 90,000 丹麦克朗 · 2026–2027",
-    "Project grant · 160,000 DKK · 2026–2027": "项目基金 · 160,000 丹麦克朗 · 2026–2027",
-    "Prizes and Awards": "奖项与荣誉",
-    "2026 · Young Talented Cancer Researcher Award, Danish Cancer Society, Denmark": "2026 · 丹麦癌症协会青年优秀癌症研究者奖，丹麦",
-    "2026 · NASSA Travel Grant, Lund, Sweden": "2026 · NASSA 差旅资助，瑞典隆德",
-    "2026 · Miltenyi Biotec Publication Award, China": "2026 · Miltenyi Biotec 论文奖，中国",
-    "2025 · HUPO Early Career Researcher Manuscript Competition, First Place, Canada": "2025 · HUPO 青年研究者论文竞赛第一名，加拿大",
-    "2025 · AU Travel Grant, Aarhus, Denmark": "2025 · 奥胡斯大学差旅资助，丹麦奥胡斯",
-    "2025 · IUPS Poster Award, International Union of Physiological Sciences Congress, Germany": "2025 · 国际生理科学联合会大会海报奖，德国",
-    "2025 · SPS Travel Grant, The Scandinavian Physiological Society, Denmark": "2025 · 斯堪的纳维亚生理学会差旅资助，丹麦",
-    "2025 · Finalist, HUPO ECR Manuscript Competition, Canada": "2025 · HUPO 青年研究者论文竞赛决赛入围，加拿大",
-    "2024 · Emerging Technologies Funding Award, GENEWIZ Week Awards, America": "2024 · GENEWIZ Week Awards 新兴技术资助奖，美国",
-    "2024 · Winner of the Danish Bioimaging Image Contest, Denmark": "2024 · 丹麦生物成像图片竞赛冠军，丹麦",
-    "2023 · Best Poster Award, CNHUPO Congress, China": "2023 · CNHUPO 大会最佳海报奖，中国",
-    "2023 · HUPO Travel Award, HUPO Congress, South Korea": "2023 · HUPO 大会差旅奖，韩国",
-    "2023 · TME Travel Award, EACR Congress, Italy": "2023 · EACR 大会 TME 差旅奖，意大利",
-    "2022 · FEBS Youth Travel Fund Grant, Sweden": "2022 · FEBS 青年差旅基金，瑞典",
-    "2022 · Keystone Symposia Future of Science Fund Scholarship, Italy": "2022 · Keystone Symposia Future of Science Fund 奖学金，意大利",
-    "2020 · Poster Prize, DZL Congress, Germany": "2020 · DZL 大会海报奖，德国",
-    "2019 · Poster Prize, DZL Congress, Germany": "2019 · DZL 大会海报奖，德国",
-    "2017 · Best Poster Award, MPI Retreat, Germany": "2017 · MPI Retreat 最佳海报奖，德国",
-    "2017 · International Trainee Scholarship Award, ATS Congress, America": "2017 · ATS 大会国际青年研究者奖学金，美国",
-    "2017 · William MacNee Award, ERS Congress, Portugal": "2017 · ERS 大会 William MacNee 奖，葡萄牙",
-    "We’re growing. More opportunities coming soon!": "团队正在发展壮大，更多机会即将发布！",
-    "Download video": "下载视频",
-    "© Zheng Lab · Aarhus University": "© Zheng Lab · 奥胡斯大学",
-    "Spatial Proteomics · Tumor Microenvironment · Precision Oncology": "空间蛋白质组学 · 肿瘤微环境 · 精准肿瘤学"
+  const da = {
+    "Research": "Forskning",
+    "Representative Work": "Udvalgte arbejder",
+    "Platform & Equipment": "Platform og udstyr",
+    "Team": "Team",
+    "Aarhus University · Department of Biomedicine": "Aarhus Universitet · Institut for Biomedicin",
+    "Spatial proteomics for": "Rumlig proteomik til",
+    "precision oncology.": "præcisionsonkologi.",
+    "Dr. Xiang Zheng leads translational spatial proteomics programs that decode tumor-immune ecosystems, discover biomarkers of therapy resistance, and bridge multiplexed imaging with deep proteomic profiling for precision oncology.": "Dr. Xiang Zheng leder translationelle programmer inden for rumlig proteomik, som afkoder tumor-immun-økosystemer, finder biomarkører for behandlingsresistens og forbinder multiplex-billeddannelse med dyb proteomisk profilering til præcisionsonkologi.",
+    "View Representative Work": "Se udvalgte arbejder",
+    "Explore Research": "Udforsk forskningen",
+    "publications (11 first-author, 4 corresponding-author)": "publikationer (11 som førsteforfatter, 4 som korresponderende forfatter)",
+    "international awards": "internationale priser",
+    "invited or selected international conference talks": "inviterede eller udvalgte internationale konferenceforedrag",
+    "17M DKK": "17 mio. DKK",
+    "secured across 8 competitive research grants": "hjemtaget gennem 8 konkurrenceudsatte forskningsbevillinger",
+    "Dr. Xiang Zheng": "Dr. Xiang Zheng",
+    "Group Leader and LEO Foundation Dr. Abildgaard Fellow": "Gruppeleder og LEO Foundation Dr. Abildgaard Fellow",
+    "Contact": "Kontakt",
+    "Orcid:": "ORCID:",
+    "Scan for LinkedIn": "Scan til LinkedIn",
+    "Research Focus": "Forskningsfokus",
+    "Understanding disease as a spatially organized ecosystem.": "At forstå sygdom som et rumligt organiseret økosystem.",
+    "The lab combines clinical questions with high-dimensional imaging, laser microdissection, mass spectrometry, and computational interpretation to resolve molecular programs inside tissue.": "Laboratoriet forbinder kliniske spørgsmål med højdimensional billeddannelse, lasermikrodissektion, massespektrometri og beregningsmæssig fortolkning for at afdække molekylære programmer i væv.",
+    "Tumor-Immune Crosstalk": "Tumor-immun-samspil",
+    "Decode how cancer cells, macrophages, T cells, and stromal neighborhoods interact to shape immune evasion and therapy response.": "Afdæk, hvordan kræftceller, makrofager, T-celler og stromale naboskaber påvirker immunundvigelse og behandlingsrespons.",
+    "Spatial Proteomics": "Rumlig proteomik",
+    "Build and apply mipDVP workflows that connect multiplexed tissue images with deep proteomic measurements at spatially defined cell populations.": "Udvikle og anvende mipDVP-arbejdsgange, der forbinder multiplex-vævsbilleder med dybe proteommålinger af rumligt definerede cellepopulationer.",
+    "Precision Medicine": "Præcisionsmedicin",
+    "Transform archived and clinical tissues into molecular maps that reveal biomarkers, vulnerabilities, and patient-specific therapeutic hypotheses.": "Omsæt arkiveret og klinisk væv til molekylære kort, der afdækker biomarkører, sårbarheder og patientspecifikke behandlingsidéer.",
+    "Highly multiplexed imaging and deep visual proteomics.": "Højt multiplekset billeddannelse og dyb visuel proteomik.",
+    "The provided representative article introduces mipDVP and applies it to colorectal and tonsil cancer tissues to reveal spatially regulated tumor-immune interactions.": "Den udvalgte artikel introducerer mipDVP og anvender metoden på væv fra kolorektal- og tonsilcancer for at afdække rumligt regulerede tumor-immun-interaktioner.",
+    "Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics": "At afkode funktionelt tumor-immun-samspil gennem højt multiplekset billeddannelse og dyb visuel proteomik",
+    "Developed an advanced strategy combining multiplexed imaging, single-cell laser microdissection, and sensitive mass spectrometry.": "Udviklede en avanceret strategi, der kombinerer multiplex-billeddannelse, enkeltcellet lasermikrodissektion og følsom massespektrometri.",
+    "Identified 21 cell populations and thousands of proteins while preserving spatial tissue context.": "Identificerede 21 cellepopulationer og tusindvis af proteiner og bevarede samtidig vævets rumlige sammenhæng.",
+    "Revealed an immunosuppressive macrophage barrier that may impede T-cell infiltration in cold tumors.": "Afdækkede en immunsuppressiv makrofagbarriere, som kan hæmme T-celleinfiltration i kolde tumorer.",
+    "Discovered spatial T-cell adaptations in hypoxic tumor regions and potential immunotherapy targets.": "Opdagede rumlige T-celle-tilpasninger i hypoksiske tumorområder og mulige mål for immunterapi.",
+    "Open Full Paper PDF": "Åbn artiklens PDF",
+    "A platform for reading tissue architecture and proteomic depth together, enabling spatial insights for personalized oncology.": "En platform, der læser vævsarkitektur og proteomisk dybde sammen og giver rumlig indsigt til personaliseret onkologi.",
+    "Platform": "Platform",
+    "A tissue-to-proteome workflow built for clinical questions.": "En arbejdsgang fra væv til proteom, bygget til kliniske spørgsmål.",
+    "The design emphasizes the lab's methodological identity: spatial context first, then deep molecular profiling, then translational interpretation.": "Designet fremhæver laboratoriets metodiske identitet: først rumlig kontekst, derefter dyb molekylær profilering og til sidst translationel fortolkning.",
+    "Multiplexed Imaging": "Multiplex-billeddannelse",
+    "Visualize tumor, immune, and stromal markers across intact clinical tissue sections.": "Visualiser tumor-, immun- og stromamarkører på intakte kliniske vævssnit.",
+    "Spatial Selection": "Rumlig udvælgelse",
+    "Choose cell populations and niches based on tissue context and biological hypotheses.": "Vælg cellepopulationer og nicher ud fra vævskontekst og biologiske hypoteser.",
+    "Proteomic Profiling": "Proteomisk profilering",
+    "Measure thousands of proteins from selected cells using sensitive mass spectrometry.": "Mål tusindvis af proteiner fra udvalgte celler med følsom massespektrometri.",
+    "Clinical Translation": "Klinisk translation",
+    "Identify biomarkers, immune adaptations, and therapeutic targets for precision medicine.": "Find biomarkører, immuntilpasninger og behandlingsmål til præcisionsmedicin.",
+    "Research Infrastructure": "Forskningsinfrastruktur",
+    "Our spaces and scientific equipment.": "Vores rum og videnskabelige udstyr.",
+    "Based in the Skou Building at Aarhus University, our research infrastructure brings together automated multiplexing, laser microdissection, mass spectrometry, and spatial metabolomics.": "I Skou-bygningen på Aarhus Universitet samler vores forskningsinfrastruktur automatiseret multiplex-analyse, lasermikrodissektion, massespektrometri og rumlig metabolomik.",
+    "The Skou Building": "Skou-bygningen",
+    "Main hub": "Hovedbase",
+    "Lab space": "Laboratorieplads",
+    "Automated multiplexing": "Automatiseret multiplex-analyse",
+    "Laser microdissection": "Lasermikrodissektion",
+    "Mass spectrometry": "Massespektrometri",
+    "Spatial metabolomics": "Rumlig metabolomik",
+    "Our Team": "Vores team",
+    "Meet the people behind Zheng Lab.": "Mød menneskene bag Zheng Lab.",
+    "Our independent research group at Aarhus University is backed by a 12 million DKK LEO Foundation starting grant. Together, we study spatial proteomics for precision oncology and dermatology.": "Vores selvstændige forskningsgruppe på Aarhus Universitet er støttet af et startlegat på 12 mio. DKK fra LEO Foundation. Sammen undersøger vi rumlig proteomik til præcisionsonkologi og dermatologi.",
+    "Postdoc": "Postdoc",
+    "Research trainees": "Forskningsstuderende",
+    "Technical staff": "Teknisk personale",
+    "(Computational Systems Biologist)": "(Beregningsmæssig systembiolog)",
+    "(Histology Specialist)": "(Histologispecialist)",
+    "(Organ-on-Chip Engineer)": "(Organ-on-chip-ingeniør)",
+    "(Cell Culture Specialist)": "(Cellekulturspecialist)",
+    "(Molecular Biology Specialist)": "(Molekylærbiologisk specialist)",
+    "CV / About": "CV / Om",
+    "Academic profile": "Akademisk profil",
+    "Academic profile, leadership, and translational impact.": "Akademisk profil, ledelse og translationel gennemslagskraft.",
+    "Research funding and awards": "Forskningsbevillinger og priser",
+    "Xiang Zheng, PhD, is a Group Leader and LEO Foundation Dr. Abildgaard Fellow at Aarhus University, advancing spatial proteomics, immune microenvironment biology, and precision medicine.": "Xiang Zheng, ph.d., er gruppeleder og LEO Foundation Dr. Abildgaard Fellow ved Aarhus Universitet og arbejder med rumlig proteomik, immunmikromiljøbiologi og præcisionsmedicin.",
+    "Overview": "Overblik",
+    "Author of 22 publications, including 11 as first author and 4 as corresponding author. Secured 8 competitive research grants totalling approximately 17 million DKK, received travel or award-based funding on 9 occasions, delivered 42 invited or selected international conference talks, and received 20 international awards.": "Forfatter til 22 publikationer, heraf 11 som førsteforfatter og 4 som korresponderende forfatter. Har hjemtaget 8 konkurrenceudsatte forskningsbevillinger på i alt ca. 17 mio. DKK, modtaget rejse- eller præmiebaseret støtte 9 gange, holdt 42 inviterede eller udvalgte internationale konferenceforedrag og modtaget 20 internationale priser.",
+    "Academic Appointments": "Akademiske ansættelser",
+    "2026–present · Group Leader, LEO Foundation Dr. Abildgaard Fellow, Aarhus University": "2026–nu · Gruppeleder, LEO Foundation Dr. Abildgaard Fellow, Aarhus Universitet",
+    "2024–2026 · Assistant Professor, Aarhus University": "2024–2026 · Adjunkt, Aarhus Universitet",
+    "(mentor: Prof. Robert A. Fenton)": "(mentor: prof. Robert A. Fenton)",
+    "2021–2024 · Postdoctoral Researcher, University of Copenhagen": "2021–2024 · Postdoc, Københavns Universitet",
+    "(mentor: Prof. Matthias Mann)": "(mentor: prof. Matthias Mann)",
+    "Education": "Uddannelse",
+    "2021 · PhD, Human Biomedicine, Max Planck Institute, Bad Nauheim, Germany": "2021 · Ph.d. i human biomedicin, Max Planck Institute, Bad Nauheim, Tyskland",
+    "2014 · MSc, Molecular Biology and Oncology, Peking University, Beijing, China": "2014 · Kandidat i molekylærbiologi og onkologi, Peking University, Beijing, Kina",
+    "2011 · Bachelor of Clinical Medicine, Nanchang University, Nanchang, China": "2011 · Bachelor i klinisk medicin, Nanchang University, Nanchang, Kina",
+    "Scientific Focus Areas": "Videnskabelige fokusområder",
+    "Spatial proteomics:": "Rumlig proteomik:",
+    "developed mipDVP, now expanding to 3D and immune clone-resolved spatial multiomics.": "udviklede mipDVP og udvider nu til 3D og immunklon-opløst rumlig multiomik.",
+    "Immune microenvironment:": "Immunmikromiljø:",
+    "high-resolution spatial profiling of tumour and inflammatory immune ecosystems.": "højtopløselig rumlig profilering af tumor- og inflammatoriske immunøkosystemer.",
+    "Computational disease modeling:": "Beregningsmæssig sygdomsmodellering:",
+    "AI-driven integration of spatial omics data to predict disease progression and treatment response.": "AI-drevet integration af rumlige omikdata til at forudsige sygdomsforløb og behandlingsrespons.",
+    "Precision medicine:": "Præcisionsmedicin:",
+    "translating spatial biomarkers into clinical diagnostics and therapeutic targets.": "omsætning af rumlige biomarkører til klinisk diagnostik og behandlingsmål.",
+    "Teaching and Supervision": "Undervisning og vejledning",
+    "Supervised or co-supervised 12 junior researchers: 4 Bachelor's, 2 Master's, 2 PhD students (co-supervision), 1 postdoctoral researcher, and 3 laboratory technicians.": "Har vejledt eller medvejledt 12 yngre forskere: 4 bachelorstuderende, 2 kandidatstuderende, 2 ph.d.-studerende (medvejledning), 1 postdoc og 3 laboranter.",
+    "Research-based teaching in Medical Biochemistry Lab Exercises (approximately 530 Bachelor students annually), Histology, Immunology, and Single-Cell Multiomics.": "Forskningsbaseret undervisning i medicinsk biokemi (laboratorieøvelser, ca. 530 bachelorstuderende årligt), histologi, immunologi og enkeltcellet multiomik.",
+    "Invited lecturer and co-designer of Spatial Proteomics courses for PhD students and postdocs at Aarhus University and Alamein International University.": "Inviteret underviser og medudvikler af kurser i rumlig proteomik for ph.d.-studerende og postdocs ved Aarhus Universitet og Alamein International University.",
+    "Completed University Pedagogy, Aarhus University (2025), and Introduction to University Pedagogy, University of Copenhagen (2023); ongoing PhD Supervision Course, Aarhus University (2026).": "Gennemført universitetspædagogik, Aarhus Universitet (2025), og introduktion til universitetspædagogik, Københavns Universitet (2023); i gang med ph.d.-vejlederkursus, Aarhus Universitet (2026).",
+    "Developed and shared SOPs for multiplexed immunofluorescence, laser microdissection, and spatial data analysis.": "Har udviklet og delt SOP'er for multiplekset immunofluorescens, lasermikrodissektion og rumlig dataanalyse.",
+    "Dissemination and Academic Service": "Formidling og fagligt virke",
+    "42 selected or invited lectures worldwide, including a plenary oral presentation at HUPO Congress 2025 (Toronto), an invited presentation at EACR 2025 (Portugal), and lectures at Umeå University, Lund University, University of Copenhagen, and Karolinska Institute.": "42 udvalgte eller inviterede foredrag verden over, herunder et plenarforedrag ved HUPO Congress 2025 (Toronto), et inviteret foredrag ved EACR 2025 (Portugal) samt foredrag ved Umeå Universitet, Lunds Universitet, Københavns Universitet og Karolinska Institutet.",
+    "Advisory Board Member, HUPO; Editorial Board Member,": "Medlem af HUPO's advisory board; redaktionsmedlem,",
+    "; Ambassador, EACR; Founding Member, International Academic Association of Targetome (IAAT); Editorial Advisory Board Member,": "; ambassadør for EACR; stiftende medlem af International Academic Association of Targetome (IAAT); medlem af redaktionsrådet,",
+    ".": ".",
+    "Professional memberships: EORTC, AACR, DSBMB, HUPO, and SPS.": "Faglige medlemskaber: EORTC, AACR, DSBMB, HUPO og SPS.",
+    "102 peer-review reports for 20+ journals and funding bodies, including": "102 fagfællebedømmelser for mere end 20 tidsskrifter og bevillingsgivere, herunder",
+    ", and the Swiss National Science Foundation; book proposal reviewer, Elsevier (2026).": ", samt Swiss National Science Foundation; bedømmer af bogforslag, Elsevier (2026).",
+    "Co-organiser, Spatial Seminar, Aarhus (2025, 80+ international participants); contributor to the Nordic Alliance for Single-Cell and Spatial Analysis (Denmark–Sweden–Norway, 2026).": "Medarrangør af Spatial Seminar, Aarhus (2025, over 80 internationale deltagere); bidragyder til Nordic Alliance for Single-Cell and Spatial Analysis (Danmark–Sverige–Norge, 2026).",
+    "Entrepreneurship and Industry Collaboration": "Iværksætteri og industrisamarbejde",
+    "Co-Founder, InnovEdged AB (2024–present, with Dr. Jianning Zhao), developing interpretable machine-learning tools that make spatial proteomics analysis more accessible to clinical and translational users.": "Medstifter af InnovEdged AB (2024–nu, sammen med dr. Jianning Zhao) og udvikler fortolkelige maskinlæringsværktøjer, der gør rumlig proteomanalyse mere tilgængelig for kliniske og translationelle brugere.",
+    "Miltenyi Biotec (PI, EU HALRIC) · 3D imaging integration": "Miltenyi Biotec (PI, EU HALRIC) · integration af 3D-billeddannelse",
+    "Leica Microsystems (with Dr. Falk Schlaudraff) · laser microdissection software optimisation": "Leica Microsystems (med dr. Falk Schlaudraff) · optimering af software til lasermikrodissektion",
+    "Single-Cell Technologies (with Dr. Ferenc Kovacs) · BIAS software algorithm development": "Single-Cell Technologies (med dr. Ferenc Kovacs) · udvikling af algoritmer til BIAS-softwaren",
+    "HiComp · skin-on-chip and microfluidic platforms": "HiComp · hud-på-chip og mikrofluidiske platforme",
+    "10 Selected Publications": "10 udvalgte publikationer",
+    "(*: First Author; #: Corresponding Author)": "(*: førsteforfatter; #: korresponderende forfatter)",
+    "Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics.": "At afkode funktionelt tumor-immun-samspil gennem højt multiplekset billeddannelse og dyb visuel proteomik.",
+    "Spatial density and distribution of tumor-associated macrophages predict survival in non-small-cell lung carcinoma.": "Rumlig tæthed og fordeling af tumorassocierede makrofager forudsiger overlevelse ved ikke-småcellet lungekræft.",
+    "Deep visual proteomics reveals distinct proximal tubular and glomerular injury programs in experimental diabetic kidney disease. Preprint, bioRxiv, 2026. doi:": "Dyb visuel proteomik afdækker forskellige skadesprogrammer i proksimale tubuli og glomeruli ved eksperimentel diabetisk nyresygdom. Preprint, bioRxiv, 2026. doi:",
+    "The HDAC2-SP1 axis orchestrates protumor macrophage polarization.": "HDAC2–SP1-aksen styrer protumor makrofagpolarisering.",
+    "Fibrocytes boost tumor-supportive phenotypic switches in the lung cancer niche via the endothelin system.": "Fibrocytter fremmer tumorstøttende fænotypiske skift i lungekræftnichen via endotelinsystemet.",
+    "Protocol for spatial proteomic profiling of tonsil cancer microenvironments using multiplexed imaging-powered Deep Visual Proteomics (mipDVP).": "Protokol til rumlig proteomisk profilering af tonsilcancermikromiljøer med multiplex-billeddrevet Deep Visual Proteomics (mipDVP).",
+    "Metabolism in tumor-associated macrophages: a quid pro quo with the tumor microenvironment.": "Metabolisme i tumorassocierede makrofager: en udveksling med tumormikromiljøet.",
+    "Tumor-associated macrophage-specific β-catenin-FOSL2-ARID5A axis is a major driver of macrophage reprogramming and progression of lung cancer.": "Den tumorassocierede makrofagspecifikke β-catenin–FOSL2–ARID5A-akse er en væsentlig drivkraft for omprogrammering af makrofager og progression af lungekræft.",
+    "Microenvironmental Th9- and Th17- lymphocytes induce metastatic spreading in lung cancer.": "Th9- og Th17-lymfocytter i mikromiljøet fremkalder metastatisk spredning ved lungekræft.",
+    "Redirecting tumor-associated macrophages to become tumoricidal effectors as a novel strategy for cancer therapy.": "At omdirigere tumorassocierede makrofager til tumoridræbende effektorceller som en ny strategi for kræftbehandling.",
+    "(as a journal cover article)": "(forsideartikel)",
+    "Research Funding": "Forskningsbevillinger",
+    "8 competitive grants · approximately 17 million DKK secured": "8 konkurrenceudsatte bevillinger · ca. 17 mio. DKK hjemtaget",
+    "LEO Foundation, Dr Abildgaard Fellowship": "LEO Foundation, Dr Abildgaard Fellowship",
+    "Personal fellowship / starting grant · 12,000,000 DKK · 2026–2030": "Personligt fellowship / startbevilling · 12.000.000 DKK · 2026–2030",
+    "Danish Cancer Society, Young Talented Cancer Researchers": "Kræftens Bekæmpelse, Young Talented Cancer Researchers",
+    "Personal research grant · 3,750,000 DKK · 2027–2030": "Personlig forskningsbevilling · 3.750.000 DKK · 2027–2030",
+    "Hanseatic Life Science Research Infrastructure Consortium (HALRIC)": "Hanseatic-konsortiet for forskningsinfrastruktur inden for life science (HALRIC)",
+    "Project / infrastructure grant · 600,000 DKK · 2025–2026": "Projekt- / infrastrukturbevilling · 600.000 DKK · 2025–2026",
+    "Project grant · 80,000 DKK · 2025–2026": "Projektbevilling · 80.000 DKK · 2025–2026",
+    "Career grant · 90,000 DKK · 2026": "Karrierebevilling · 90.000 DKK · 2026",
+    "Project grant · 90,000 DKK · 2026–2027": "Projektbevilling · 90.000 DKK · 2026–2027",
+    "Project grant · 160,000 DKK · 2026–2027": "Projektbevilling · 160.000 DKK · 2026–2027",
+    "Prizes and Awards": "Priser og udmærkelser",
+    "2026 · Young Talented Cancer Researcher Award, Danish Cancer Society, Denmark": "2026 · Young Talented Cancer Researcher Award, Kræftens Bekæmpelse, Danmark",
+    "2026 · NASSA Travel Grant, Lund, Sweden": "2026 · NASSA-rejsestøtte, Lund, Sverige",
+    "2026 · Miltenyi Biotec Publication Award, China": "2026 · Miltenyi Biotec Publication Award, Kina",
+    "2025 · HUPO Early Career Researcher Manuscript Competition, First Place, Canada": "2025 · HUPO Early Career Researcher Manuscript Competition, førsteplads, Canada",
+    "2025 · AU Travel Grant, Aarhus, Denmark": "2025 · AU-rejsestøtte, Aarhus, Danmark",
+    "2025 · IUPS Poster Award, International Union of Physiological Sciences Congress, Germany": "2025 · IUPS-posterpris, International Union of Physiological Sciences Congress, Tyskland",
+    "2025 · SPS Travel Grant, The Scandinavian Physiological Society, Denmark": "2025 · SPS-rejsestøtte, The Scandinavian Physiological Society, Danmark",
+    "2025 · Finalist, HUPO ECR Manuscript Competition, Canada": "2025 · Finalist, HUPO ECR Manuscript Competition, Canada",
+    "2024 · Emerging Technologies Funding Award, GENEWIZ Week Awards, America": "2024 · Emerging Technologies Funding Award, GENEWIZ Week Awards, USA",
+    "2024 · Winner of the Danish Bioimaging Image Contest, Denmark": "2024 · Vinder af Danish Bioimaging Image Contest, Danmark",
+    "2023 · Best Poster Award, CNHUPO Congress, China": "2023 · Bedste poster, CNHUPO Congress, Kina",
+    "2023 · HUPO Travel Award, HUPO Congress, South Korea": "2023 · HUPO-rejsestøtte, HUPO Congress, Sydkorea",
+    "2023 · TME Travel Award, EACR Congress, Italy": "2023 · TME-rejsestøtte, EACR Congress, Italien",
+    "2022 · FEBS Youth Travel Fund Grant, Sweden": "2022 · FEBS Youth Travel Fund, Sverige",
+    "2022 · Keystone Symposia Future of Science Fund Scholarship, Italy": "2022 · Keystone Symposia Future of Science Fund-stipendium, Italien",
+    "2020 · Poster Prize, DZL Congress, Germany": "2020 · Posterpris, DZL Congress, Tyskland",
+    "2019 · Poster Prize, DZL Congress, Germany": "2019 · Posterpris, DZL Congress, Tyskland",
+    "2017 · Best Poster Award, MPI Retreat, Germany": "2017 · Bedste poster, MPI Retreat, Tyskland",
+    "2017 · International Trainee Scholarship Award, ATS Congress, America": "2017 · International Trainee Scholarship Award, ATS Congress, USA",
+    "2017 · William MacNee Award, ERS Congress, Portugal": "2017 · William MacNee Award, ERS Congress, Portugal",
+    "We’re growing. More opportunities coming soon!": "Vi vokser. Flere muligheder kommer snart!",
+    "Download video": "Download video",
+    "© Zheng Lab · Aarhus University": "© Zheng Lab · Aarhus Universitet",
+    "Spatial Proteomics · Tumor Microenvironment · Precision Oncology": "Rumlig proteomik · Tumormikromiljø · Præcisionsonkologi"
   };
 
   const titleByLanguage = {
     en: "Zheng Lab | Spatial Proteomics at Aarhus University",
-    "zh-CN": "Zheng Lab | 奥胡斯大学空间蛋白质组学课题组"
+    da: "Zheng Lab | Rumlig proteomik ved Aarhus Universitet"
   };
 
   const descriptionByLanguage = {
     en: "Zheng Lab at Aarhus University develops spatial proteomics and deep visual proteomics approaches for tumor-immune biology and precision oncology.",
-    "zh-CN": "奥胡斯大学 Zheng Lab 开发空间蛋白质组学和深度视觉蛋白质组学方法，研究肿瘤免疫生物学与精准肿瘤学。"
+    da: "Zheng Lab ved Aarhus Universitet udvikler rumlig proteomik og dyb visuel proteomik til tumor-immun-biologi og præcisionsonkologi."
   };
 
   const translatedAttributes = {
-    "Zheng Lab home": "Zheng Lab 首页",
-    "Primary navigation": "主导航",
-    "Display settings": "显示设置",
-    "Lab highlights": "课题组亮点",
-    "Zheng Lab video": "Zheng Lab 视频",
-    "Miltenyi video": "Miltenyi 视频",
-    "Dr. Xiang Zheng profile": "郑翔博士简介",
-    "Contact information": "联系信息",
-    "Publication summary": "论文摘要",
-    "Research funding and awards": "科研资助与奖项",
-    "The Skou Building at Aarhus University": "奥胡斯大学 Skou 大楼",
-    "Lab space at Aarhus University": "奥胡斯大学实验室空间",
-    "MACSima — Automated multiplexing": "MACSima — 自动化多重分析",
-    "LMD7 — Laser microdissection": "LMD7 — 激光显微切割",
-    "Orbitrap Ascend — Mass spectrometry": "Orbitrap Ascend — 质谱分析",
-    "timsTOF fleX MALDI-2 — Spatial metabolomics": "timsTOF fleX MALDI-2 — 空间代谢组学",
-    "Zheng Lab research trainee portrait 1": "Zheng Lab 科研实习生照片 1",
-    "Zheng Lab research trainee portrait 2": "Zheng Lab 科研实习生照片 2",
-    "Zheng Lab research trainee portrait 3": "Zheng Lab 科研实习生照片 3",
-    "Zheng Lab research trainee portrait 4": "Zheng Lab 科研实习生照片 4",
-    "Zheng Lab technical staff portrait 1": "Zheng Lab 技术人员照片 1",
-    "Zheng Lab technical staff portrait 2": "Zheng Lab 技术人员照片 2",
-    "Zheng Lab technical staff portrait 3": "Zheng Lab 技术人员照片 3",
-    "Dr. Xiang Zheng in a laboratory setting": "郑翔博士在实验室",
-    "Dr. Xiang Zheng LinkedIn QR code": "郑翔博士 LinkedIn 二维码"
+    "Zheng Lab home": "Zheng Lab-forside",
+    "Primary navigation": "Primær navigation",
+    "Display settings": "Visningsindstillinger",
+    "Lab highlights": "Laboratoriets nøgletal",
+    "Zheng Lab video": "Zheng Lab-video",
+    "Miltenyi video": "Miltenyi-video",
+    "Dr. Xiang Zheng profile": "Profil for dr. Xiang Zheng",
+    "Contact information": "Kontaktoplysninger",
+    "Publication summary": "Publikationsresumé",
+    "Research funding and awards": "Forskningsbevillinger og priser",
+    "The Skou Building at Aarhus University": "Skou-bygningen ved Aarhus Universitet",
+    "Lab space at Aarhus University": "Laboratorieplads ved Aarhus Universitet",
+    "MACSima — Automated multiplexing": "MACSima — automatiseret multiplex-analyse",
+    "LMD7 — Laser microdissection": "LMD7 — lasermikrodissektion",
+    "Orbitrap Ascend — Mass spectrometry": "Orbitrap Ascend — massespektrometri",
+    "timsTOF fleX MALDI-2 — Spatial metabolomics": "timsTOF fleX MALDI-2 — rumlig metabolomik",
+    "Zheng Lab research trainee portrait 1": "Zheng Lab-portræt af forskningsstuderende 1",
+    "Zheng Lab research trainee portrait 2": "Zheng Lab-portræt af forskningsstuderende 2",
+    "Zheng Lab research trainee portrait 3": "Zheng Lab-portræt af forskningsstuderende 3",
+    "Zheng Lab research trainee portrait 4": "Zheng Lab-portræt af forskningsstuderende 4",
+    "Zheng Lab technical staff portrait 1": "Zheng Lab-portræt af teknisk personale 1",
+    "Zheng Lab technical staff portrait 2": "Zheng Lab-portræt af teknisk personale 2",
+    "Zheng Lab technical staff portrait 3": "Zheng Lab-portræt af teknisk personale 3",
+    "Dr. Xiang Zheng in a laboratory setting": "Dr. Xiang Zheng i laboratoriet",
+    "Dr. Xiang Zheng LinkedIn QR code": "QR-kode til dr. Xiang Zhengs LinkedIn"
   };
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -273,18 +276,18 @@
     }
 
     function updateControls(language) {
-      const isChinese = language === "zh-CN";
+      const isDanish = language === "da";
       const isDark = root.dataset.theme === "dark";
 
-      languageLabel.textContent = isChinese ? "EN" : "中文";
-      languageToggle.querySelector(".control-icon").textContent = isChinese ? "A" : "文";
-      languageToggle.setAttribute("aria-label", isChinese ? "Switch to English" : "切换为中文");
-      languageToggle.title = isChinese ? "Switch to English" : "切换为中文";
+      languageLabel.textContent = isDanish ? "EN" : "Dansk";
+      languageToggle.querySelector(".control-icon").textContent = isDanish ? "A" : "D";
+      languageToggle.setAttribute("aria-label", isDanish ? "Switch to English" : "Skift til dansk");
+      languageToggle.title = isDanish ? "Switch to English" : "Skift til dansk";
 
       themeIcon.textContent = isDark ? "☀" : "☾";
-      themeLabel.textContent = isChinese ? (isDark ? "浅色" : "深色") : (isDark ? "Light" : "Dark");
-      const themeAction = isChinese
-        ? (isDark ? "切换为浅色模式" : "切换为深色模式")
+      themeLabel.textContent = isDanish ? (isDark ? "Lys" : "Mørk") : (isDark ? "Light" : "Dark");
+      const themeAction = isDanish
+        ? (isDark ? "Skift til lys tilstand" : "Skift til mørk tilstand")
         : (isDark ? "Switch to light mode" : "Switch to dark mode");
       themeToggle.setAttribute("aria-label", themeAction);
       themeToggle.title = themeAction;
@@ -292,7 +295,7 @@
     }
 
     function applyLanguage(language) {
-      const isChinese = language === "zh-CN";
+      const isDanish = language === "da";
       root.lang = language;
       document.title = titleByLanguage[language];
       description.content = descriptionByLanguage[language];
@@ -300,18 +303,18 @@
       textNodes.forEach((textNode) => {
         const source = originalText.get(textNode);
         const key = normalize(source);
-        replaceText(textNode, isChinese && zh[key] ? zh[key] : source.trim());
+        replaceText(textNode, isDanish && da[key] ? da[key] : source.trim());
       });
 
       attributeNodes.forEach((element) => {
         const source = originalAttributes.get(element);
         if (source.ariaLabel !== null) {
-          element.setAttribute("aria-label", isChinese && translatedAttributes[source.ariaLabel]
+          element.setAttribute("aria-label", isDanish && translatedAttributes[source.ariaLabel]
             ? translatedAttributes[source.ariaLabel]
             : source.ariaLabel);
         }
         if (source.alt !== null) {
-          element.setAttribute("alt", isChinese && translatedAttributes[source.alt]
+          element.setAttribute("alt", isDanish && translatedAttributes[source.alt]
             ? translatedAttributes[source.alt]
             : source.alt);
         }
@@ -330,7 +333,16 @@
     }
 
     languageToggle.addEventListener("click", function () {
-      applyLanguage(root.lang === "zh-CN" ? "en" : "zh-CN");
+      applyLanguage(root.lang === "da" ? "en" : "da");
+    });
+
+    document.querySelectorAll(".cv-toggle").forEach((button) => {
+      const panel = document.getElementById(button.getAttribute("aria-controls"));
+      button.addEventListener("click", function () {
+        const open = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!open));
+        panel.hidden = open;
+      });
     });
 
     themeToggle.addEventListener("click", function () {
